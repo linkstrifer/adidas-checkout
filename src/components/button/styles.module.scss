@@ -1,0 +1,41 @@
+.button {
+  --translation: -3px;
+
+  align-items: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  display: flex;
+  min-height: var(--input-height);
+  padding: 0 20px;
+  border: 0;
+  position: relative;
+  transform: translate(var(--translation), var(--translation));
+
+  &::before {
+    border: 1px solid var(--color-black);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(2px, 2px);
+    width: 100%;
+  }
+
+  &:focus {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    color: var(--color-black);
+    outline: 0;
+  }
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

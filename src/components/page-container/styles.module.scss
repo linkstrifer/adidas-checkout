@@ -1,0 +1,9 @@
+.container {
+  padding: 15px;
+}
+
+.full-bleed {
+  composes: container;
+
+  padding: 15px 0;
+}

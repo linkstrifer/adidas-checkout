@@ -1,0 +1,32 @@
+.container {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  display: flex;
+  justify-content: space-between;
+  min-height: var(--input-height);
+  padding: 0 20px;
+  width: 100%;
+
+  &:focus {
+    outline: 1px solid var(--color-black);
+  }
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.icon {
+}
+
+.results {
+  composes: container;
+
+  box-sizing: border-box;
+}
