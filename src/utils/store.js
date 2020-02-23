@@ -42,8 +42,6 @@ class StoreClass {
     this.state = newState
 
     localStorage.setItem('store', JSON.stringify(this.state))
-
-    console.log(this.state)
   }
 }
 

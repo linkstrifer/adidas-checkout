@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.2.1",
     "@xstate/react": "^0.8.1",
     "classnames": "^2.2.6",
+    "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -17,7 +19,8 @@
     "xstate": "^4.7.8"
   },
   "scripts": {
-    "start": "npm run build",
+    "start": "npm i ; npm run build ; (node index.js & npm run api)",
+    "api": "cd server ; npm start",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
