@@ -3,13 +3,24 @@
 
   align-items: center;
   background-color: var(--color-black);
+  border: 0;
   color: var(--color-white);
   display: flex;
+  justify-content: space-between;
   min-height: var(--input-height);
   padding: 0 20px;
-  border: 0;
   position: relative;
   transform: translate(var(--translation), var(--translation));
+  width: 100%;
+
+  &[disabled] {
+    background-color: var(--color-jumbo);
+    color: var(--color-white);
+
+    &::before {
+      border-color: var(--color-jumbo);
+    }
+  }
 
   &::before {
     border: 1px solid var(--color-black);

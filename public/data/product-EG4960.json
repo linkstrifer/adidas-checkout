@@ -1,0 +1,296 @@
+{
+  "id": "EG4960",
+  "name": "Superstar Shoes",
+  "model_number": "GVS47",
+  "product_type": "inline",
+  "meta_data": {
+    "page_title": "adidas Superstar Shoes - White | adidas US",
+    "site_name": "adidas United States",
+    "description": "Shop the Superstar Shoes - White at adidas.com/us! See all the styles and colors of Superstar Shoes - White at the official adidas online shop.",
+    "keywords": "Superstar Shoes",
+    "canonical": "//www.adidas.com/us/superstar-shoes/EG4960.html"
+  },
+  "view_list": [
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/a4d975e141054d24a0eaaae700d36352_9366/Superstar_Shoes_White_EG4960_01_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "videoasset",
+      "image_url": "https://assets.adidas.com/videos/w_600,f_auto,q_auto/7cc2dc99077a46859f24aad300853c98_d98c/Superstar_Shoes_White_EG4960_video.jpg",
+      "video_url": "https://assets.adidas.com/videos/t_videomain/7cc2dc99077a46859f24aad300853c98_d98c/Superstar_Shoes_White_EG4960_video.mp4",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "other",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/51a86d06e0bb4fb48075ab1400f8f28a_9366/Superstar_Shoes_White_EG4960_HM1.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/f886206806004832b969aae60113534e_9366/Superstar_Shoes_White_EG4960_010_hover_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/41aa172bad094a12bd56aae700d385dc_9366/Superstar_Shoes_White_EG4960_02_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/5a775c58366246cdaef6aae700d39160_9366/Superstar_Shoes_White_EG4960_03_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/d1c0010adb6c44459cd9aae700d39caf_9366/Superstar_Shoes_White_EG4960_04_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/d522e929c71442e2b8f2aae700d3a8b5_9366/Superstar_Shoes_White_EG4960_05_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/f547040268f84c13b344aae700d37bae_9366/Superstar_Shoes_White_EG4960_06_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/e42d4dbbc2a74cb6ac09aae700d36e5c_9366/Superstar_Shoes_White_EG4960_07_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "detail",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/5a630d4c83984d15a008aae700d3b786_9366/Superstar_Shoes_White_EG4960_41_detail.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "detail",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/6219ff80fb724f98b939aae700d3c11a_9366/Superstar_Shoes_White_EG4960_42_detail.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "detail",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/37ec3d0bbb764ec3864baae700d3cb2e_9366/Superstar_Shoes_White_EG4960_43_detail.jpg",
+      "source": "CLOUDINARY"
+    }
+  ],
+  "pricing_information": {
+    "standard_price": 80,
+    "standard_price_no_vat": 80,
+    "currentPrice": 80
+  },
+  "attribute_list": {
+    "isWaitingRoomProduct": false,
+    "brand": "Originals",
+    "collection": [
+      "Triples Collection",
+      "Best Sellers",
+      "Home of Classics",
+      "Under 100",
+      "SS20",
+      "Mini Me",
+      "Classic Sneakers"
+    ],
+    "category": "Shoes",
+    "color": "Cloud White / Cloud White / Cloud White",
+    "gender": "M",
+    "personalizable": false,
+    "mandatory_personalization": false,
+    "customizable": false,
+    "pricebook": "adidas-US-listprices",
+    "sale": false,
+    "outlet": false,
+    "isCnCRestricted": false,
+    "sport": ["Lifestyle"],
+    "size_chart_link": "/on/demandware.store/Sites-adidas-US-Site/en_US/Page-Include?cid=size-chart-size-shoes",
+    "preview_to": "2012-12-11T22:00:00.000Z",
+    "coming_soon_signup": false,
+    "productType": ["Athletic & Sneakers"],
+    "sportSub": ["Superstar"],
+    "features": ["Patrick Mahomes"],
+    "search_color": "White",
+    "specialLaunch": false,
+    "search_color_raw": "White"
+  },
+  "callouts": {
+    "callout_top_stack": [
+      {
+        "id": "pdp-promo-nodiscount",
+        "sub_title": "This product is excluded from all promotional discounts and offers.",
+        "body": "This product is excluded from all promotional discounts codes and other offers."
+      }
+    ],
+    "callout_bottom_stack": [
+      {
+        "id": "pdp-callout-bottom",
+        "title": "FREE SHIPPING OVER $49 + FREE RETURNS & EXCHANGES",
+        "body": "<p>FREE SHIPPING OVER $49 + FREE RETURNS &amp; EXCHANGES</p>\r\n\r\n<p>Spend over $49 and shipping is free! Creators Club members unlock free shipping on any order. Sign up or Login.&nbsp;</p>\r\n\r\n<p>If you are not completely satisfied with your adidas.com purchase, for any reason, we will offer you a free return or exchange within 30 days of purchase. Some restrictions apply.</p>\r\n\r\n<p>Check out our Return Policy for more details.</p>",
+        "link_text": "FREE SHIPPING OVER $49 + FREE RETURNS & EXCHANGES",
+        "iconID": "usp-delivery"
+      },
+      {
+        "id": "pdp-callout-bottom-2",
+        "title": "Buy now, pay over time with PayPal CREDIT",
+        "link_text": "Buy now, pay over time with PayPal CREDIT"
+      }
+    ]
+  },
+  "product_description": {
+    "title": "Superstar Shoes",
+    "subtitle": "The authentic low top with the shell toe.",
+    "text": "Originally made for basketball courts in the '70s. Celebrated by hip hop royalty in the '80s. The adidas Superstar shoe is now a lifestyle staple for streetwear enthusiasts. The world-famous shell toe feature remains, providing style and protection. Just like it did on the B-ball courts back in the day. \n \nNow, whether at a festival or walking in the street you can enjoy yourself without the fear of being stepped on.\n\nThe serrated 3-Stripes detail and adidas Superstar box logo adds OG authenticity to your look.",
+    "usps": [
+      "Lace closure",
+      "Leather upper",
+      "Iconic leather shoes",
+      "Rubber outsole",
+      "Imported"
+    ],
+    "product_highlights": [
+      {
+        "image_reference": "https://assets.adidas.com/images/w_600,f_auto,q_auto/9c2d868ea3b54e27bed5ab1400f8f79d_9366/Superstar_Shoes_White_EG4960.jpg",
+        "headline": "Iconic design",
+        "copy": "For over 50 years, the adidas Superstar sneaker has been the go-to of sport and street legends, connecting creators across cultures."
+      },
+      {
+        "image_reference": "https://assets.adidas.com/images/w_600,f_auto,q_auto/ba9b511ab4a14adebcfeab1400f8fc32_9366/Superstar_Shoes_White_EG4960.jpg",
+        "headline": "Distinctive details",
+        "copy": "The instantly recognizable shell toe is complemented by three serrated stripes and adidas Originals accents."
+      },
+      {
+        "image_reference": "https://assets.adidas.com/images/w_600,f_auto,q_auto/e924c0b416bf478bbab9ab1400f90202_9366/Superstar_Shoes_White_EG4960.jpg",
+        "headline": "Quality materials",
+        "copy": "Always in style, this classic silhouette features full-grain leather for enhanced durability and comfort."
+      }
+    ],
+    "description_assets": {
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/d1c0010adb6c44459cd9aae700d39caf_9366/Superstar_Shoes_White_EG4960.jpg",
+      "video_url": null,
+      "poster_url": null
+    }
+  },
+  "product_link_list": [
+    {
+      "type": "color-variation",
+      "name": "Superstar Shoes",
+      "url": "/us/superstar-shoes/EG4957.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/af405adab99747708f01aad8011626ff_9366/Superstar_Shoes_Black_EG4957_01_standard.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/default/dwf901b717/zoom/EG4957_010_hover_standard.jpg",
+      "pricing_information": {
+        "standard_price": 80
+      },
+      "default_color": "Core Black / Core Black / Core Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "EG4957"
+    },
+    {
+      "type": "color-variation",
+      "name": "Superstar Shoes",
+      "url": "/us/superstar-shoes/EG4958.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/default/dwc6f0dd5a/zoom/EG4958_010_hover_standard.jpg",
+      "pricing_information": {
+        "standard_price": 80
+      },
+      "default_color": "Cloud White / Core Black / Cloud White",
+      "search_color": "White",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "EG4958"
+    },
+    {
+      "type": "color-variation",
+      "name": "Superstar Shoes",
+      "url": "/us/superstar-shoes/EG4959.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/15f901c90a9549d29104aae700d27efb_9366/Superstar_Shoes_Black_EG4959_01_standard.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/default/dw7020e8d7/zoom/EG4959_010_hover_standard.jpg",
+      "pricing_information": {
+        "standard_price": 80
+      },
+      "default_color": "Core Black / Cloud White / Core Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "EG4959"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "SST Track Pants",
+      "url": "/us/sst-track-pants/CW1275.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/95a625bad40b46aba6caa83a00d1cd37_9366/SST_Track_Pants_Black_CW1275_01_laydown.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dw83c7c751/zoom/CW1275_22_model.jpg",
+      "pricing_information": {
+        "standard_price": 65
+      },
+      "default_color": "Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "CW1275"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "Trefoil Hoodie",
+      "url": "/us/trefoil-hoodie/DT7964.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/14ef3b97b7e8489e90d5a873013bf126_9366/Trefoil_Hoodie_Black_DT7964_21_model.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dwa165199e/zoom/DT7964_22_model.jpg",
+      "pricing_information": {
+        "standard_price": 65
+      },
+      "default_color": "Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "DT7964"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "Trefoil Tee",
+      "url": "/us/trefoil-tee/CW0709.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/b4243520a2a34615befda80b00d5d3b0_9366/Trefoil_Tee_Black_CW0709_01_laydown.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dw891755fc/zoom/CW0709_22_model.jpg",
+      "pricing_information": {
+        "standard_price": 30
+      },
+      "default_color": "Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "CW0709"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "3-Stripes Shorts",
+      "url": "/us/3-stripes-shorts/EJ9691.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/2781b684a1f64717835faa6100b7baf1_9366/3_Stripes_Shorts_Blue_EJ9691_21_model.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dw0d179555/zoom/EJ9691_22_model.jpg",
+      "pricing_information": {
+        "standard_price": 45,
+        "sale_price": 23,
+        "vip_price": 23
+      },
+      "default_color": "Collegiate Navy / Bluebird",
+      "search_color": "Blue",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "EJ9691"
+    }
+  ],
+  "breadcrumb_list": [
+    {
+      "text": "Men",
+      "link": "/us/men"
+    },
+    {
+      "text": "Shoes",
+      "link": "/us/men-shoes"
+    }
+  ],
+  "recommendationsEnabled": true
+}

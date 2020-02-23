@@ -2,11 +2,18 @@ import React from 'react'
 
 import styles from './styles.module.scss'
 
-function Button({ label }) {
+import Icon from '../icon'
+
+function Button({ label, disabled, onClick }) {
   return (
-    <button className={styles.button} type="button">
+    <button
+      onClick={() => onClick()}
+      className={styles.button}
+      type="button"
+      disabled={disabled}
+    >
       <span className={styles.label}>{label}</span>
-      <span>icon</span>
+      <Icon name="arrow-right-long" />
     </button>
   )
 }

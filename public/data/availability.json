@@ -1,0 +1,168 @@
+{
+  "id": "EG4960",
+  "availability_status": "IN_STOCK",
+  "variation_list": [
+    {
+      "sku": "EG4960_520",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "3.5"
+    },
+    {
+      "sku": "EG4960_530",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "4"
+    },
+    {
+      "sku": "EG4960_540",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "4.5"
+    },
+    {
+      "sku": "EG4960_550",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "5"
+    },
+    {
+      "sku": "EG4960_560",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "5.5"
+    },
+    {
+      "sku": "EG4960_570",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "6"
+    },
+    {
+      "sku": "EG4960_580",
+      "availability": 9,
+      "availability_status": "IN_STOCK",
+      "size": "6.5"
+    },
+    {
+      "sku": "EG4960_590",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "7"
+    },
+    {
+      "sku": "EG4960_600",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "7.5"
+    },
+    {
+      "sku": "EG4960_610",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "8"
+    },
+    {
+      "sku": "EG4960_620",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "8.5"
+    },
+    {
+      "sku": "EG4960_630",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "9"
+    },
+    {
+      "sku": "EG4960_640",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "9.5"
+    },
+    {
+      "sku": "EG4960_650",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "10"
+    },
+    {
+      "sku": "EG4960_660",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "10.5"
+    },
+    {
+      "sku": "EG4960_670",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "11"
+    },
+    {
+      "sku": "EG4960_680",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "11.5"
+    },
+    {
+      "sku": "EG4960_690",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "12"
+    },
+    {
+      "sku": "EG4960_700",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "12.5"
+    },
+    {
+      "sku": "EG4960_710",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "13"
+    },
+    {
+      "sku": "EG4960_720",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "13.5"
+    },
+    {
+      "sku": "EG4960_730",
+      "availability": 15,
+      "availability_status": "IN_STOCK",
+      "size": "14"
+    },
+    {
+      "sku": "EG4960_740",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "14.5"
+    },
+    {
+      "sku": "EG4960_760",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "16"
+    },
+    {
+      "sku": "EG4960_780",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "17"
+    },
+    {
+      "sku": "EG4960_790",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "18"
+    },
+    {
+      "sku": "EG4960_800",
+      "availability": 0,
+      "availability_status": "NOT_AVAILABLE",
+      "size": "19"
+    }
+  ]
+}

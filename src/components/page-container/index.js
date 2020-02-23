@@ -8,7 +8,7 @@ function PageContainer({ children, type }) {
   return (
     <>
       <Header />
-      <div className={styles[type || 'container']}>{children}</div>
+      <main className={styles[type || 'container']}>{children}</main>
     </>
   )
 }

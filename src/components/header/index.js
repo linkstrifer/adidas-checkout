@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import styles from './styles.module.scss'
 
-import { ReactComponent as Logo } from '../../static/images/logo.svg'
+import { ReactComponent as Logo } from '../../assets/logo.svg'
+
+import HeaderCart from './cart'
 
 const navOptions = [
   {
-    options: ['Men', 'Women', 'Kid'],
-  },
-  {
-    options: ['Sports', 'Brands'],
-  },
-  {
-    options: ['Release Dates'],
+    options: ['Shoes', 'Clothing'],
   },
 ]
 
@@ -23,7 +20,7 @@ function SubNav(subNav, index) {
     <ul className={styles.subNav} key={`subNav-${index}`}>
       {options.map(label => (
         <li key={label} className={styles.navOption}>
-          {label}
+          <Link to={`/${label.toLowerCase()}`}>{label}</Link>
         </li>
       ))}
     </ul>
@@ -37,11 +34,11 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <a className={styles.logoLink} href="/">
+      <Link to="/" className={styles.logoLink}>
         <Logo className={styles.logo} />
-      </a>
+      </Link>
       <ul className={styles.nav}>{navOptions.map(SubNav)}</ul>
-      <div className={styles.search}>Search</div>
+      <HeaderCart />
     </header>
   )
 }

@@ -1,38 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import classnames from 'classnames'
 
 import styles from './styles.module.scss'
 
-const colors = ['black', 'marine', 'red']
-
-function ColorSwatch({ selected, onSelect }) {
+function ColorSwatch({ color, selected, onSelect }) {
   return (
-    <button
-      onClick={onSelect}
+    <Link
+      to={`/product/${color.id}`}
       type="button"
       className={classnames(styles.swatch, { [styles.selected]: selected })}
     >
-      <img src="https://assets.adidas.com/images/w_385,h_385,f_auto,q_auto:sensitive,fl_lossy/75916ebef5434e608d87a9af0013fdec_9366/five-ten-freerider-pro-mountain-bike-shoes.jpg" />
-    </button>
+      <img src={color.image} alt={color.name} />
+    </Link>
   )
 }
 
-function ColorSelector() {
-  const [selected, setSelected] = useState(1)
+function ColorSelector({ current, colors, name, onChange }) {
+  const orderedColors =
+    colors &&
+    colors.sort(
+      (a, b) => a.id.replace(/[a-zA-Z]/g, '') - b.id.replace(/[a-zA-Z]/g, '')
+    )
 
   return (
     <div className={styles.container}>
       <h5 className={styles.title}>Available Colors</h5>
-      <span className={styles.selected}>{`${selected}`}</span>
+      <span className={styles.selected}>{`${name}`}</span>
       <ul className={styles.list}>
-        {colors.map((value, index) => (
-          <ColorSwatch
-            onSelect={() => setSelected(index)}
-            key={value}
-            value={value}
-            selected={index === selected}
-          />
-        ))}
+        {colors &&
+          orderedColors.map(color => (
+            <ColorSwatch
+              onSelect={onChange}
+              key={color.id}
+              color={color}
+              selected={color.id === current}
+            />
+          ))}
       </ul>
     </div>
   )

@@ -1,58 +1,106 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { useStore } from '../../utils/store'
 
 import styles from './styles.module.scss'
+
 import Select from '../select'
 import Button from '../button'
 import ColorSelector from '../color-selector'
+import { useParams } from 'react-router-dom'
 
-function ProductDetail() {
+function ProductDetail({ editMode }) {
+  const [store, dispatch] = useStore('productDetail')
+  const [productsStore] = useStore('productList')
+  const [cartStore, cartDispatch] = useStore('cart')
+  const { id } = useParams()
+
+  let product = productsStore.products.find(product => id === product.id)
+  let size
+  let quantity
+
+  if (editMode) {
+    const productInCart = cartStore.products.find(product => id === product.id)
+
+    if (productInCart) {
+      size = productInCart.size
+      quantity = productInCart.quantity
+    }
+  } else {
+    size = store.size
+    quantity = store.quantity
+  }
+
+  useEffect(() => {
+    dispatch('FETCH', {
+      id,
+    })
+  }, [dispatch, id, product])
+
+  if (!product) {
+    return false
+  }
+
   return (
     <div className={styles.container}>
       <figure className={styles.image}>
-        <img src="https://assets.adidas.com/images/w_385,h_385,f_auto,q_auto:sensitive,fl_lossy/75916ebef5434e608d87a9af0013fdec_9366/five-ten-freerider-pro-mountain-bike-shoes.jpg" />
+        <img src={product.image.src} alt={product.displayName} />
       </figure>
       <div className={styles.data}>
         <div className={styles.info}>
-          <span className={styles.category}>Category</span>
-          <h1 className={styles.name}>Name</h1>
-          <span className={styles.price}>
-            $0 <span className={styles.discount}>$0</span>{' '}
-            <span className={styles.discounted}>$0</span>
-          </span>
+          <span className={styles.category}>{product.category}</span>
+          <h1 className={styles.name}>{product.displayName}</h1>
         </div>
         <div className={styles.chooser}>
           <div className={styles.colors}>
-            <ColorSelector />
+            <ColorSelector
+              onChange={color =>
+                dispatch('SET', {
+                  color,
+                })
+              }
+              colors={product.colors}
+              name={product.color}
+              current={product.id}
+            />
           </div>
           <div className={styles.sizes}>
             <Select
               label="Select Size"
+              value={size && size.displaySize}
               list={{
                 label: 'US men sizes',
-                options: [
-                  7,
-                  7.5,
-                  8,
-                  8.5,
-                  9,
-                  9.5,
-                  10,
-                  10.5,
-                  11,
-                  11.5,
-                  12,
-                  12.5,
-                  13,
-                  14,
-                  15,
-                ],
+                options: product.sizes,
               }}
+              onChange={({ id, value }) =>
+                dispatch('SET', {
+                  size: {
+                    id,
+                    displaySize: value,
+                  },
+                })
+              }
             />
           </div>
           <div className={styles.quantity}>
-            <Select defaultValue={1} range={[1, 15]} />
+            <Select
+              type="small"
+              value={quantity}
+              range={[1, 15]}
+              onChange={({ value: quantity }) => dispatch('SET', { quantity })}
+            />
           </div>
-          <Button label="Add to bag" />
+          <Button
+            label={editMode ? 'Update Cart' : 'Add to bag'}
+            disabled={!size}
+            onClick={() => {
+              cartDispatch(editMode ? 'UPDATE' : 'ADD', {
+                id: product.id,
+                quantity,
+                size,
+              })
+            }}
+          />
         </div>
       </div>
     </div>

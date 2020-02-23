@@ -3,14 +3,14 @@ import React from 'react'
 import PageContainer from '../components/page-container/index'
 import ProductDetail from '../components/product-detail/index'
 
-function ProductsPage() {
+function ProductPage({ editMode }) {
   return (
     <>
       <PageContainer type="full-bleed">
-        <ProductDetail />
+        <ProductDetail editMode={editMode} />
       </PageContainer>
     </>
   )
 }
 
-export default ProductsPage
+export default ProductPage

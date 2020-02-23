@@ -1,0 +1,32 @@
+:root {
+  --padding: 12px 3px;
+}
+
+.container {
+  cursor: pointer;
+  padding: var(--padding);
+  position: relative;
+
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+
+    .content {
+      display: block;
+    }
+  }
+}
+
+.content {
+  bottom: 0;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  display: none;
+  font-size: 20px;
+  padding: 17px 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translate(0, 100%);
+  width: 310px;
+}

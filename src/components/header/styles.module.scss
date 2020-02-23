@@ -28,15 +28,15 @@
 
   &:hover {
     background-color: var(--color-white);
+
+    .logo path {
+      fill: var(--color-black);
+    }
   }
 }
 
 .logo {
   width: 70px;
-
-  &:hover path {
-    fill: var(--color-black);
-  }
 }
 
 .nav {
@@ -68,8 +68,8 @@
     background-color: white;
     color: var(--color-black);
   }
-}
 
-.search {
-  margin: var(--padding);
+  a {
+    text-decoration: none;
+  }
 }

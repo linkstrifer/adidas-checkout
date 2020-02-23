@@ -1,0 +1,68 @@
+:root {
+  --action-size: 50px;
+  --padding-top: 20px;
+}
+
+.container {
+  background-color: var(--color-porcelain);
+  border: 1px solid var(--color-black);
+  display: flex;
+}
+
+.image {
+  align-self: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  line-height: 0;
+  width: 240px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.data {
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-top) var(--action-size) var(--padding-top) 4%;
+  position: relative;
+  flex-grow: 1;
+}
+
+.name {
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.attributes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.category {
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.action {
+  align-items: center;
+  background-color: var(--color-white);
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  height: var(--action-size);
+  justify-content: center;
+  width: var(--action-size);
+}

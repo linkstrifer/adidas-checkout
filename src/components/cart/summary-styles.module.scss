@@ -1,0 +1,22 @@
+.container {
+  border: 1px solid var(--color-porcelain);
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--margin);
+  padding: 24px 15px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 18px;
+  margin: 0 0 20px;
+}
+
+.item {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  line-height: 20px;
+  margin-bottom: 14px;
+}

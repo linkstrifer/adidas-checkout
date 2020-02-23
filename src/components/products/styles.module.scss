@@ -54,20 +54,6 @@
   white-space: nowrap;
 }
 
-.price {
-  composes: price from '../product-detail/styles.module.scss';
-
-  margin-top: 5px;
-}
-
-.discount {
-  composes: discount from '../product-detail/styles.module.scss';
-}
-
-.discounted {
-  composes: discounted from '../product-detail/styles.module.scss';
-}
-
 .colors {
   bottom: var(--padding);
   color: var(--color-jumbo);

@@ -1,0 +1,2640 @@
+---
+swagger: '2.0'
+info:
+  version: '0.0.3'
+  title: 'eCom Checkout API'
+host: 'adidas.com'
+basePath: '/api/checkout'
+schemes:
+  - 'https'
+consumes:
+  - 'application/json'
+produces:
+  - 'application/json; charset=utf-8'
+security:
+  - Authorization: []
+  - Session Cookie: []
+paths:
+  /test:
+    get:
+      operationId: 'testGET'
+      parameters: []
+      responses:
+        '200':
+          description: 'OK'
+      x-swagger-router-controller: 'Default'
+  /baskets:
+    post:
+      tags:
+        - 'Basket'
+      description: 'creates a new basket'
+      operationId: 'basketsPOST'
+      parameters: []
+      responses:
+        '201':
+          description: 'Success'
+          schema:
+            $ref: '#/definitions/Basket'
+        '400':
+          description: 'error'
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: 'server error, api is not able to manage error'
+      x-swagger-router-controller: 'Basket'
+  /baskets/{basket_id}:
+    get:
+      tags:
+        - 'Basket'
+      description: 'DEPRECATED - returns the cart identified by the id to the caller'
+      operationId: 'getCart'
+      parameters:
+        - name: 'basket_id'
+          in: 'path'
+          description: 'It represents basket unique identifier'
+          required: true
+          type: 'string'
+          pattern: '^[a-z0-9]{26}$'
+      responses:
+        '200':
+          description: 'Success'
+          schema:
+            $ref: '#/definitions/Basket'
+        '400':
+          description: 'error'
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: 'server error, api is not able to manage error'
+      x-swagger-router-controller: 'Basket'
+    delete:
+      tags:
+        - 'Basket'
+      description: 'delete the given basket.'
+      operationId: 'basketsBasket_idDELETE'
+      parameters:
+        - name: 'basket_id'
+          in: 'path'
+          description: 'It represents basket unique identifier'
+          required: true
+          type: 'string'
+          pattern: '^[a-z0-9]{26}$'
+      responses:
+        '200':
+          description: 'The basket was deleted successfully.'
+        '400':
+          description:
+            "Indicates that the customer assigned to the basket does not\
+            \ match the verified customer represented by the JWT token."
+        '500':
+          description: 'server error, api is not able to manage error'
+      x-swagger-router-controller: 'Basket'
+    patch:
+      tags:
+        - 'Basket'
+      description: 'modifies some basket properties with the given content'
+      operationId: 'basketsBasket_idPATCH'
+      parameters:
+        - name: 'basket_id'
+          in: 'path'
+          description: 'It represents basket unique identifier'
+          required: true
+          type: 'string'
+          pattern: '^[a-z0-9]{26}$'
+        - in: 'body'
+          name: 'basketModification'
+          required: true
+          schema:
+            $ref: '#/definitions/BasketModification'
+      responses:
+        '200':
+          description: 'Success'
+          schema:
+            $ref: '#/definitions/Basket'
+        '400':
+          description: 'error'
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: 'server error, api is not able to manage error'
+      x-swagger-router-controller: 'Basket'
+  /baskets/{basket_id}/items:
+    post:
+      tags:
+        - 'Basket'
+      description: 'Allows the user to add a product to the cart'
+      operationId: 'addToCart'
+      parameters:
+        - name: 'Content-Type'
+          in: 'header'
+          required: true
+          type: 'string'
+          enum:
+            - 'application/json'
+        - name: 'basket_id'
+          in: 'path'
+          description: 'It represents basket unique identifier'
+          required: true
+          type: 'string'
+          pattern: '^[a-z0-9]{26}$'
+        - in: 'body'
+          name: 'products'
+          description: 'The product to be added'
+          required: true
+          schema:
+            $ref: '#/definitions/MultipleProductToAdd'
+      responses:
+        '200':
+          description: 'Success'
+          schema:
+            $ref: '#/definitions/Basket'
+        '400':
+          description: 'error'
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: 'server error, api is not able to manage error'
+      x-swagger-router-controller: 'Basket'
+  /baskets/{basket_id}/items/{item_id}:
+    delete:
+      tags:
+        - 'Basket'
+      description: 'Allows the user to remove product from the cart'
+      operationId: 'basketsBasket_idItemsItem_idDELETE'
+      parameters:
+        - name: 'basket_id'
+          in: 'path'
+          description: 'It represents basket unique identifier'
+          required: true
+          type: 'string'
+          pattern: '^[a-z0-9]{26}$'
+        - name: 'item_id'
+          in: 'path'
+          description: 'identify unique product line item id in the cart'
+          required: true
+          type: 'string'
+          x-example: 'item_id'
+      responses:
+        '200':
+          description: 'Success'
+          schema:
+            $ref: '#/definitions/Basket'
+        '400':
+          description: 'error'
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: 'server error, api is not able to manage error'
+      x-swagger-router-controller: 'Basket'
+    patch:
+      tags:
+        - 'Basket'
+      description: 'Allow the user to update product line item of given basket'
+      operationId: 'basketsBasket_idItemsItem_idPATCH'
+      parameters:
+        - name: 'basket_id'
+          in: 'path'
+          description: 'It represents basket unique identifier'
+          required: true
+          type: 'string'
+          pattern: '^[a-z0-9]{26}$'
+        - name: 'item_id'
+          in: 'path'
+          description: 'identify unique product line item id in the cart'
+          required: true
+          type: 'string'
+          x-example: 'item_id'
+        - in: 'body'
+          name: 'product'
+          description: 'The product to be updated'
+          required: true
+          schema:
+            $ref: '#/definitions/ProductToAdd'
+      responses:
+        '200':
+          description: 'Success'
+          schema:
+            $ref: '#/definitions/Basket'
+        '400':
+          description: 'error'
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: 'server error, api is not able to manage error'
+      x-swagger-router-controller: 'Basket'
+securityDefinitions:
+  Authorization:
+    description:
+      "Authorization header from add to basket response to be used on every\
+      \ subsequent request. If not provided, the API will generate it."
+    type: 'basic'
+  Session Cookie:
+    description:
+      "SFCC cookies from add to basket response (dwsid* and dwsecuretoken*)\
+      \ to be sent on every subsequent request. If not provided, the API will generate\
+      \ them."
+    type: 'apiKey'
+    name: 'SFCC Session Cookie'
+    in: 'header'
+definitions:
+  Customer:
+    properties:
+      customerId:
+        type: 'string'
+        description: "Customer's unique id of SFCC"
+      name:
+        type: 'string'
+        description: "Customer's name"
+      email:
+        description: 'It represents customer email address'
+        $ref: '#/definitions/CustomerEmail'
+      encryptedEmail:
+        type: 'string'
+        description: 'Encrypted version of customer email. Used for analytics purposes'
+      receiveSmsUpdates:
+        type: 'boolean'
+        description:
+          "Should the customer receive SMS notifications. Only enabled\
+          \ for CnC delivery."
+      isLoggedIn:
+        type: 'boolean'
+        description: 'Defines if this customer is logged in or not.'
+    example:
+      receiveSmsUpdates: true
+      customerId: 'customerId'
+      name: 'name'
+      encryptedEmail: 'encryptedEmail'
+      isLoggedIn: true
+      email: {}
+  AddressValidationResult:
+    properties:
+      suggestionList:
+        type: 'array'
+        items:
+          $ref: '#/definitions/AddresValidationSuggestion'
+      isValid:
+        type: 'boolean'
+        description: 'It shows if address is valid'
+      isCorrected:
+        type: 'boolean'
+        description: 'It shows if address is corrected'
+      jobToken:
+        type: 'string'
+        description: "It's a token returned by address validation service (optional)"
+      jobTokenRemainingUsage:
+        type: 'number'
+        description: 'It shows how many times we can reuse jobtoken (optional)'
+    example:
+      jobToken: 'jobToken'
+      isValid: true
+      jobTokenRemainingUsage: 5.63737665663332876420099637471139430999755859375
+      suggestionList:
+        - zipCode: 'zipCode'
+          province: 'province'
+          formattedAddress: 'formattedAddress'
+          city: 'city'
+          street: 'street'
+          houseNumber: 'houseNumber'
+        - zipCode: 'zipCode'
+          province: 'province'
+          formattedAddress: 'formattedAddress'
+          city: 'city'
+          street: 'street'
+          houseNumber: 'houseNumber'
+      isCorrected: true
+  AddresValidationSuggestion:
+    properties:
+      zipCode:
+        type: 'string'
+        description: 'postal code'
+      city:
+        type: 'string'
+        description: 'city'
+      houseNumber:
+        type: 'string'
+        description: 'house number'
+      street:
+        type: 'string'
+        description: 'street'
+      province:
+        type: 'string'
+        description: 'province'
+      formattedAddress:
+        type: 'string'
+        description: 'formatted address'
+    example:
+      zipCode: 'zipCode'
+      province: 'province'
+      formattedAddress: 'formattedAddress'
+      city: 'city'
+      street: 'street'
+      houseNumber: 'houseNumber'
+  Message:
+    properties:
+      messageType:
+        type: 'string'
+        description: 'It shows the type of message; info, warn, error or success'
+        enum:
+          - 'INFO'
+          - 'WARN'
+          - 'ERROR'
+          - 'SUCCESS'
+      type:
+        type: 'string'
+        description: 'It shows type of error.'
+      details:
+        $ref: '#/definitions/MessageDetail'
+    example:
+      messageType: 'INFO'
+      details:
+        availableQuantity: 1.489415909854170383397331534069962799549102783203125
+        articleNumber: 'articleNumber'
+        shipmentId: 'shipmentId'
+        requestedQuantity: 1.024645700144157789424070870154537260532379150390625
+        outOfStockLetters:
+          - 'outOfStockLetters'
+          - 'outOfStockLetters'
+        outOfStockNumbers:
+          - 'outOfStockNumbers'
+          - 'outOfStockNumbers'
+        badgeMissing: true
+        maximumQuantity: 1.231513536777255612975068288506008684635162353515625
+      type: 'type'
+  MessageDetail:
+    properties:
+      productId:
+        description: 'The unique SKU'
+        $ref: '#/definitions/ProductId'
+      shipmentId:
+        type: 'string'
+        description: 'Unique shipment id'
+      articleNumber:
+        type: 'string'
+      maximumQuantity:
+        type: 'number'
+      requestedQuantity:
+        type: 'number'
+      availableQuantity:
+        type: 'number'
+      outOfStockLetters:
+        type: 'array'
+        items:
+          type: 'string'
+      outOfStockNumbers:
+        type: 'array'
+        items:
+          type: 'string'
+      badgeMissing:
+        type: 'boolean'
+    example:
+      availableQuantity: 1.489415909854170383397331534069962799549102783203125
+      articleNumber: 'articleNumber'
+      shipmentId: 'shipmentId'
+      requestedQuantity: 1.024645700144157789424070870154537260532379150390625
+      outOfStockLetters:
+        - 'outOfStockLetters'
+        - 'outOfStockLetters'
+      outOfStockNumbers:
+        - 'outOfStockNumbers'
+        - 'outOfStockNumbers'
+      badgeMissing: true
+      maximumQuantity: 1.231513536777255612975068288506008684635162353515625
+  MultipleProductToAdd:
+    type: 'array'
+    items:
+      $ref: '#/definitions/ProductToAdd'
+  ProductToAdd:
+    type: 'object'
+    required:
+      - 'productId'
+    properties:
+      productId:
+        description: 'The unique SKU'
+        $ref: '#/definitions/ProductId'
+      quantity:
+        type: 'number'
+        description: 'The amount of product to be added to cart. By default is 1'
+      recipe:
+        description: 'The recipe specification for personalized products'
+        $ref: '#/definitions/Recipe'
+      recipeId:
+        type: 'string'
+        description:
+          "The unique receipe id sent from miconfigurator. It is used to\
+          \ validate personalization recipe"
+      customizationRecipeId:
+        type: 'string'
+        description:
+          "The unique receipe id sent from miconfigurator. It is used to\
+          \ validate customization recipe"
+      masterProductId:
+        description: 'TheUnique master product id.'
+        $ref: '#/definitions/MasterProductId'
+      displaySize:
+        type: 'string'
+        description: 'The country specific size value.'
+      captchaResponse:
+        type: 'string'
+        description: 'google captcha response'
+      segmentationId:
+        type: 'string'
+        description:
+          "Segmentation string used to define the customer group for the\
+          \ basket."
+    example:
+      captchaResponse: 'captchaResponse'
+      quantity: 0.80082819046101150206595775671303272247314453125
+      productId: {}
+      customizationRecipeId: 'customizationRecipeId'
+      masterProductId: {}
+      recipe:
+        quantity: 6.02745618307040320615897144307382404804229736328125
+        articleNumber: 'articleNumber'
+        selectedOptions: {}
+        technicalSize: 'technicalSize'
+        countrySize: 'countrySize'
+        sku: 'sku'
+      displaySize: 'displaySize'
+      segmentationId: 'segmentationId'
+      recipeId: 'recipeId'
+  Recipe:
+    type: 'object'
+    required:
+      - 'articleNumber'
+      - 'quantity'
+      - 'selectedOptions'
+    properties:
+      articleNumber:
+        type: 'string'
+        description: 'The article number that this recipe is based on'
+      quantity:
+        type: 'number'
+        description: 'The quantity of products that will use this recipe'
+      selectedOptions:
+        description: 'The recipe options'
+        $ref: '#/definitions/PersonalizationOptions'
+      sku:
+        type: 'string'
+        description: 'The sku of the item'
+      countrySize:
+        type: 'string'
+        description: 'The size based on country-specific sizes'
+      technicalSize:
+        type: 'string'
+        description: 'The unique technical size (same across all countries)'
+    example:
+      quantity: 6.02745618307040320615897144307382404804229736328125
+      articleNumber: 'articleNumber'
+      selectedOptions: {}
+      technicalSize: 'technicalSize'
+      countrySize: 'countrySize'
+      sku: 'sku'
+  PersonalizationOptions:
+    type: 'object'
+    description: 'The personalization objects based on the MiConfigurator Service'
+  GiftCertificate:
+    type: 'object'
+    required:
+      - 'cardNumber'
+      - 'pinNumber'
+    properties:
+      cardNumber:
+        type: 'string'
+        description: 'The gift card number'
+        pattern: '^[0-9]{19}$'
+      pinNumber:
+        type: 'string'
+        description: 'The pin number of the gift card'
+        pattern: '^[0-9]{4}$'
+      amount:
+        type: 'number'
+        description: 'The amount authorized by this gift card'
+  ExternalAddressInformation:
+    type: 'object'
+    properties:
+      shippingAddress:
+        description: 'The shipping address from PAYPALECS'
+        $ref: '#/definitions/ShippingAddress'
+      billingAddress:
+        description: 'The billing address from PAYPALECS'
+        $ref: '#/definitions/BillingAddress'
+      customer:
+        $ref: '#/definitions/Customer'
+  Order:
+    type: 'object'
+    required:
+      - 'billingAddress'
+      - 'creationDate'
+      - 'currency'
+      - 'orderId'
+      - 'pricing'
+      - 'resourceState'
+      - 'shipmentList'
+      - 'shippingAddress'
+      - 'taxationPolicy'
+    properties:
+      orderId:
+        type: 'string'
+        description: 'The unique identifier for the order.'
+      orderToken:
+        type: 'string'
+        description: 'The token for the order used for order tracking page url.'
+      resourceState:
+        type: 'string'
+        description:
+          "The resource_state represents the server side state of specific\
+          \ resource. To use the resource state for optimistic locking you have to\
+          \ include the resource state from the last server response in your next\
+          \ state changing (DELETE, PATCH, POST, PUT) request. You should always prefer\
+          \ to use the _resource_state property in the body. In case the requested\
+          \ API doesn't have a body use the x-dw-resource-state header. Whenever a\
+          \ resource state is part of a client's request, OCAPI verifies it by comparing\
+          \ the given value with the server resource state. If both resource states\
+          \ are equal the operation is executed, otherwise an HTTP 409 ResourceStateConflictException\
+          \ fault is returned. In case of a create request (e.g. with PUT) where the\
+          \ resource is not expected to be existing (with not_exists state), the returned\
+          \ fault is an HTTP 409 ResourceAlreadyExistsException instead."
+      taxationPolicy:
+        type: 'string'
+        description:
+          "The taxation policy used for the basket. It will determine if\
+          \ the prices in the basket are net or gross"
+        enum:
+          - 'net'
+          - 'gross'
+      creationDate:
+        description: 'The date-time of Order creation'
+        $ref: '#/definitions/DateTime'
+      paymentStatus:
+        type: 'string'
+        enum:
+          - 'not_paid'
+          - 'part_paid'
+          - 'paid'
+      status:
+        description: 'Status of an order'
+        $ref: '#/definitions/OrderStatus'
+      currency:
+        type: 'string'
+        description: 'Currency information of price like EUR'
+        pattern: '^[A-Z]{3}$'
+      shipmentList:
+        type: 'array'
+        description: "It's a collection of shipment."
+        items:
+          $ref: '#/definitions/Shipment'
+      billingAddress:
+        description:
+          "The billing address. This property is part of basket checkout\
+          \ information only."
+        $ref: '#/definitions/BillingAddress'
+      shippingAddress:
+        description:
+          "The shipping address. Basket can have one shipping addresses\
+          \ where products can be dispatched to."
+        $ref: '#/definitions/ShippingAddress'
+      pickupPoint:
+        description: 'Pickup point information if a pickup point is set.'
+        $ref: '#/definitions/PickupPoint'
+      pricing:
+        description: 'The line item container pricing information'
+        $ref: '#/definitions/LineItemContainerPricing'
+      discountList:
+        type: 'array'
+        description: 'The collection of discount. Basket can have multiple discount.'
+        items:
+          $ref: '#/definitions/Discount'
+      couponList:
+        type: 'array'
+        description:
+          "The collection of coupon. It contains of any product, shipping\
+          \ or order releated coupon."
+        items:
+          $ref: '#/definitions/Coupon'
+      paymentInstrumentList:
+        type: 'array'
+        description: 'The collection of payment instruments'
+        items:
+          $ref: '#/definitions/PaymentInstrument'
+      paymentFailureCode:
+        type: 'string'
+        example: 'confirm.error.paymentdeclined.3d_secure:_authentication_failed'
+        description: 'Formatted payment failure code'
+      messageList:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Message'
+      customer:
+        type: 'object'
+        description: 'Customer related information'
+        allOf:
+          - $ref: '#/definitions/Customer'
+          - type: 'object'
+            properties: {}
+      customerOrderHistoryStatus:
+        type: 'number'
+        description: 'Customer purchases info (repeat, reactivated or a new customer)'
+      basketReference:
+        description: 'The reference to the basket id used to create this order'
+        $ref: '#/definitions/BasketId'
+      taxCalculationMissing:
+        type: 'boolean'
+        description:
+          "true when tax calculation is missing, traditionally happens\
+          \ when the address is wrong."
+      npsSurveyURL:
+        type: 'string'
+        description: 'Base URL for collecting network promoter score from user'
+  OrderStatus:
+    type: 'string'
+    enum:
+      - 'created'
+      - 'new'
+      - 'open'
+      - 'completed'
+      - 'cancelled'
+      - 'replaced'
+      - 'failed'
+  Basket:
+    type: 'object'
+    required:
+      - 'basketId'
+      - 'currency'
+      - 'modifiedDate'
+      - 'pricing'
+      - 'resourceState'
+      - 'taxationPolicy'
+      - 'totalProductCount'
+    properties:
+      creationDate:
+        description: 'It represents  date-time of Basket creation'
+        $ref: '#/definitions/DateTime'
+      modifiedDate:
+        description: 'It represent last update date-time of Basket'
+        $ref: '#/definitions/DateTime'
+      customer:
+        type: 'object'
+        description: 'Customer related information'
+        allOf:
+          - $ref: '#/definitions/Customer'
+          - type: 'object'
+            properties: {}
+      totalProductCount:
+        type: 'integer'
+        description: 'It shows total product count in basket'
+      basketId:
+        description: 'The unique identifier for the basket.'
+        $ref: '#/definitions/BasketId'
+      resourceState:
+        type: 'string'
+        description:
+          "The resource_state represents the server side state of specific\
+          \ resource. To use the resource state for optimistic locking you have to\
+          \ include the resource state from the last server response in your next\
+          \ state changing (DELETE, PATCH, POST, PUT) request. You should always prefer\
+          \ to use the _resource_state property in the body. In case the requested\
+          \ API doesn't have a body use the x-dw-resource-state header. Whenever a\
+          \ resource state is part of a client's request, OCAPI verifies it by comparing\
+          \ the given value with the server resource state. If both resource states\
+          \ are equal the operation is executed, otherwise an HTTP 409 ResourceStateConflictException\
+          \ fault is returned. In case of a create request (e.g. with PUT) where the\
+          \ resource is not expected to be existing (with not_exists state), the returned\
+          \ fault is an HTTP 409 ResourceAlreadyExistsException instead."
+      taxationPolicy:
+        type: 'string'
+        description:
+          "The taxation policy used for the basket. It will determine if\
+          \ the prices in the basket are net or gross"
+        enum:
+          - 'net'
+          - 'gross'
+      currency:
+        type: 'string'
+        description: 'Currency information of price like EUR'
+        pattern: '^[A-Z]{3}$'
+      shipmentList:
+        type: 'array'
+        description: "It's a collection of shipment."
+        items:
+          $ref: '#/definitions/Shipment'
+      billingAddress:
+        description:
+          "The billing address. This property is part of basket checkout\
+          \ information only."
+        $ref: '#/definitions/BillingAddress'
+      pickupPoint:
+        description: 'Pickup point information if a pickup point is set.'
+        $ref: '#/definitions/PickupPoint'
+      shippingAddress:
+        description:
+          "The collection of shipping address. Basket can have one shipping\
+          \ addresses where products can be dispatched to."
+        $ref: '#/definitions/ShippingAddress'
+      shippingAddressValidation:
+        description:
+          "Address validation result based on the response from validation\
+          \ service"
+        $ref: '#/definitions/AddressValidationResult'
+      pricing:
+        description: 'The line item container pricing information'
+        $ref: '#/definitions/LineItemContainerPricing'
+      discountList:
+        type: 'array'
+        description: 'The collection of discount. Basket can have multiple discount.'
+        items:
+          $ref: '#/definitions/Discount'
+      couponList:
+        type: 'array'
+        description:
+          "The collection of coupon. It contains of any product, shipping\
+          \ or order releated coupon."
+        items:
+          $ref: '#/definitions/Coupon'
+      paymentInstrumentList:
+        type: 'array'
+        description: 'The collection of payment instruments'
+        items:
+          $ref: '#/definitions/PaymentInstrument'
+      taxBreakDown:
+        $ref: '#/definitions/Basket_taxBreakDown'
+      taxBreakdownList:
+        type: 'array'
+        description: "The collection of Tax Breakdown field. It's used in CA market"
+        items:
+          $ref: '#/definitions/TaxBreakdown'
+      messageList:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Message'
+      checkoutId:
+        type: 'string'
+        description:
+          "The checkout id associated with this basket for payment-related\
+          \ operations"
+      flashTimeLeft:
+        type: 'number'
+        description:
+          "The time left, in milliseconds, since the most recently added\
+          \ flash product was reserved"
+      taxCalculationMissing:
+        type: 'boolean'
+        description:
+          "true when tax calculation is missing, traditionally happens\
+          \ when the address is wrong."
+      segmentationId:
+        type: 'string'
+        description: 'string used to deliver information about ongoing AB tests.'
+    example:
+      basketId: '00000000000000000000000000'
+      pickupPoint:
+        cncStore:
+          country: 'GR'
+          telephoneNumber: '+358 10 123 1123'
+          distance: 1.113520056782399958450469057424925267696380615234375
+          city: 'Athens'
+          postalCode: '1000AB'
+          latitude: 37.97681879999999665642462787218391895294189453125
+          daysToWaitForDelivery: 3
+          deliveryWindow:
+            from: 1
+            to: 1
+          street: 'Ermou Street 50'
+          name: 'adidas Store Athens, Ermou Street,'
+          openingHours:
+            sunday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            saturday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            tuesday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            wednesday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            thursday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            friday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            monday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+          id: 'GR342248,'
+          state: 'MOW'
+          longitude: 23.72885409999999950514393276534974575042724609375
+        pudoStore:
+          country: 'GR'
+          telephoneNumber: '+358 10 123 1123'
+          distance: 1.113520056782399958450469057424925267696380615234375
+          city: 'Athens'
+          postalCode: '1000AB'
+          latitude: 37.97681879999999665642462787218391895294189453125
+          daysToWaitForDelivery: 3
+          deliveryWindow:
+            from: 1
+            to: 1
+          street: 'Ermou Street 50'
+          name: 'adidas Store Athens, Ermou Street,'
+          openingHours:
+            sunday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            saturday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            tuesday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            wednesday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            thursday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            friday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+            monday:
+              endHours: 18
+              startHours: 9
+              startMinutes: 0
+              endMinutes: 30
+          id: 'GR342248,'
+          state: 'MOW'
+          longitude: 23.72885409999999950514393276534974575042724609375
+      discountList:
+        - calloutMessage: 'calloutMessage'
+          couponItemId: 'couponItemId'
+          name: 'name'
+          id: 'id'
+        - calloutMessage: 'calloutMessage'
+          couponItemId: 'couponItemId'
+          name: 'name'
+          id: 'id'
+      taxBreakDown:
+        PST: 2.027123023002321833274663731572218239307403564453125
+        QST: 7.3862819483858839220147274318151175975799560546875
+        HST: 4.1456080298839363962315474054776132106781005859375
+        GST: 3.61607674925191080461672754609026014804840087890625
+      creationDate: {}
+      paymentInstrumentList:
+        - expirationYear: 7.061401241503109105224211816675961017608642578125
+          lastFour: 'lastFour'
+          maskedGiftCardNumber: 'maskedGiftCardNumber'
+          balance: 9.301444243932575517419536481611430644989013671875
+          paymentMethodId: 'paymentMethodId'
+          cardType: 'cardType'
+          holder: 'holder'
+          id: 'id'
+          expirationMonth: 2.3021358869347654518833223846741020679473876953125
+        - expirationYear: 7.061401241503109105224211816675961017608642578125
+          lastFour: 'lastFour'
+          maskedGiftCardNumber: 'maskedGiftCardNumber'
+          balance: 9.301444243932575517419536481611430644989013671875
+          paymentMethodId: 'paymentMethodId'
+          cardType: 'cardType'
+          holder: 'holder'
+          id: 'id'
+          expirationMonth: 2.3021358869347654518833223846741020679473876953125
+      taxCalculationMissing: true
+      totalProductCount: 0
+      shipmentList:
+        - shippingOnDate: {}
+          shippingLineItem: ''
+          shipmentId: 'shipmentId'
+          productLineItemList:
+            - discountList:
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+              quantity: 60
+              productId: {}
+              gender: 'gender'
+              color: 'color'
+              canonicalProductName: 'canonicalProductName'
+              availableStock: 5
+              allowedActions:
+                edit: true
+                delete: true
+                moveToWishlist: true
+              personalizationFields: '{}'
+              productName: 'productName'
+              maxQuantityAllowed: 1
+              itemId: 'itemId'
+              productImage: 'productImage'
+              size: 'size'
+              editLinkCustomizableProduct: 'editLinkCustomizableProduct'
+              isBonusProduct: true
+              lastAdded: true
+              isFlashProduct: true
+              pricing:
+                baseUnitPrice: {}
+              productType: 'INLINE'
+            - discountList:
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+              quantity: 60
+              productId: {}
+              gender: 'gender'
+              color: 'color'
+              canonicalProductName: 'canonicalProductName'
+              availableStock: 5
+              allowedActions:
+                edit: true
+                delete: true
+                moveToWishlist: true
+              personalizationFields: '{}'
+              productName: 'productName'
+              maxQuantityAllowed: 1
+              itemId: 'itemId'
+              productImage: 'productImage'
+              size: 'size'
+              editLinkCustomizableProduct: 'editLinkCustomizableProduct'
+              isBonusProduct: true
+              lastAdded: true
+              isFlashProduct: true
+              pricing:
+                baseUnitPrice: {}
+              productType: 'INLINE'
+          shipmentType: 'inline'
+        - shippingOnDate: {}
+          shippingLineItem: ''
+          shipmentId: 'shipmentId'
+          productLineItemList:
+            - discountList:
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+              quantity: 60
+              productId: {}
+              gender: 'gender'
+              color: 'color'
+              canonicalProductName: 'canonicalProductName'
+              availableStock: 5
+              allowedActions:
+                edit: true
+                delete: true
+                moveToWishlist: true
+              personalizationFields: '{}'
+              productName: 'productName'
+              maxQuantityAllowed: 1
+              itemId: 'itemId'
+              productImage: 'productImage'
+              size: 'size'
+              editLinkCustomizableProduct: 'editLinkCustomizableProduct'
+              isBonusProduct: true
+              lastAdded: true
+              isFlashProduct: true
+              pricing:
+                baseUnitPrice: {}
+              productType: 'INLINE'
+            - discountList:
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+                - calloutMessage: 'calloutMessage'
+                  couponItemId: 'couponItemId'
+                  name: 'name'
+                  id: 'id'
+              quantity: 60
+              productId: {}
+              gender: 'gender'
+              color: 'color'
+              canonicalProductName: 'canonicalProductName'
+              availableStock: 5
+              allowedActions:
+                edit: true
+                delete: true
+                moveToWishlist: true
+              personalizationFields: '{}'
+              productName: 'productName'
+              maxQuantityAllowed: 1
+              itemId: 'itemId'
+              productImage: 'productImage'
+              size: 'size'
+              editLinkCustomizableProduct: 'editLinkCustomizableProduct'
+              isBonusProduct: true
+              lastAdded: true
+              isFlashProduct: true
+              pricing:
+                baseUnitPrice: {}
+              productType: 'INLINE'
+          shipmentType: 'inline'
+      taxationPolicy: 'net'
+      shippingAddressValidation:
+        jobToken: 'jobToken'
+        isValid: true
+        jobTokenRemainingUsage: 5.63737665663332876420099637471139430999755859375
+        suggestionList:
+          - zipCode: 'zipCode'
+            province: 'province'
+            formattedAddress: 'formattedAddress'
+            city: 'city'
+            street: 'street'
+            houseNumber: 'houseNumber'
+          - zipCode: 'zipCode'
+            province: 'province'
+            formattedAddress: 'formattedAddress'
+            city: 'city'
+            street: 'street'
+            houseNumber: 'houseNumber'
+        isCorrected: true
+      messageList:
+        - messageType: 'INFO'
+          details:
+            availableQuantity: 1.489415909854170383397331534069962799549102783203125
+            articleNumber: 'articleNumber'
+            shipmentId: 'shipmentId'
+            requestedQuantity: 1.024645700144157789424070870154537260532379150390625
+            outOfStockLetters:
+              - 'outOfStockLetters'
+              - 'outOfStockLetters'
+            outOfStockNumbers:
+              - 'outOfStockNumbers'
+              - 'outOfStockNumbers'
+            badgeMissing: true
+            maximumQuantity: 1.231513536777255612975068288506008684635162353515625
+          type: 'type'
+        - messageType: 'INFO'
+          details:
+            availableQuantity: 1.489415909854170383397331534069962799549102783203125
+            articleNumber: 'articleNumber'
+            shipmentId: 'shipmentId'
+            requestedQuantity: 1.024645700144157789424070870154537260532379150390625
+            outOfStockLetters:
+              - 'outOfStockLetters'
+              - 'outOfStockLetters'
+            outOfStockNumbers:
+              - 'outOfStockNumbers'
+              - 'outOfStockNumbers'
+            badgeMissing: true
+            maximumQuantity: 1.231513536777255612975068288506008684635162353515625
+          type: 'type'
+      couponList:
+        - valid: true
+          id: 'id'
+          message: 'message'
+          couponCode: 'couponCode'
+          statusCode: 'coupon_code_already_in_basket'
+        - valid: true
+          id: 'id'
+          message: 'message'
+          couponCode: 'couponCode'
+          statusCode: 'coupon_code_already_in_basket'
+      resourceState: 'resourceState'
+      shippingAddress:
+        country: 'country'
+        lastName: 'lastName'
+        address2: 'address2'
+        city: 'city'
+        address1: 'address1'
+        island: 'island'
+        companyName: 'companyName'
+        houseNumber: 'houseNumber'
+        zipcode: 'zipcode'
+        firstName: 'firstName'
+        countyProvince: 'countyProvince'
+        phoneNumber: 'phoneNumber'
+        suburb: 'suburb'
+        id: 'id'
+        useAsBillingAddress: true
+        apartmentNumber: 'apartmentNumber'
+      flashTimeLeft: 6.8468526983526398765889098285697400569915771484375
+      currency: 'currency'
+      billingAddress:
+        country: 'country'
+        lastName: 'lastName'
+        address2: 'address2'
+        city: 'city'
+        address1: 'address1'
+        island: 'island'
+        companyName: 'companyName'
+        houseNumber: 'houseNumber'
+        zipcode: 'zipcode'
+        firstName: 'firstName'
+        countyProvince: 'countyProvince'
+        suburb: 'suburb'
+        stateCode: {}
+        id: 'id'
+        apartmentNumber: 'apartmentNumber'
+      checkoutId: 'checkoutId'
+      segmentationId: 'segmentationId'
+      pricing: {}
+      taxBreakdownList:
+        - name: 'name'
+          value: 'value'
+        - name: 'name'
+          value: 'value'
+      customer: ''
+  BasketModification:
+    type: 'object'
+    properties:
+      billingAddress:
+        description: 'The billing address'
+        $ref: '#/definitions/BillingAddress'
+      shippingAddress:
+        description: 'The shipping address'
+        $ref: '#/definitions/ShippingAddress'
+      customer:
+        description: 'Customer related information'
+        $ref: '#/definitions/Customer'
+      methodList:
+        type: 'array'
+        description: 'The shipping methods to be set for this basket'
+        items:
+          type: 'object'
+          allOf:
+            - $ref: '#/definitions/ShippingMethod'
+            - type: 'object'
+              properties: {}
+      newsletterSubscription:
+        type: 'boolean'
+        description: 'A flag to enable or not newsletter subscription for this user'
+      pickupPoint:
+        type: 'object'
+        description: 'Set pickup point for e.g. CnC'
+        allOf:
+          - $ref: '#/definitions/CnCStoreModification'
+          - $ref: '#/definitions/PUDOModification'
+      segmentationId:
+        type: 'string'
+        description: 'string used to deliver information about ongoing AB tests.'
+    example:
+      pickupPoint: ''
+      newsletterSubscription: true
+      shippingAddress:
+        country: 'country'
+        lastName: 'lastName'
+        address2: 'address2'
+        city: 'city'
+        address1: 'address1'
+        island: 'island'
+        companyName: 'companyName'
+        houseNumber: 'houseNumber'
+        zipcode: 'zipcode'
+        firstName: 'firstName'
+        countyProvince: 'countyProvince'
+        phoneNumber: 'phoneNumber'
+        suburb: 'suburb'
+        id: 'id'
+        useAsBillingAddress: true
+        apartmentNumber: 'apartmentNumber'
+      billingAddress:
+        country: 'country'
+        lastName: 'lastName'
+        address2: 'address2'
+        city: 'city'
+        address1: 'address1'
+        island: 'island'
+        companyName: 'companyName'
+        houseNumber: 'houseNumber'
+        zipcode: 'zipcode'
+        firstName: 'firstName'
+        countyProvince: 'countyProvince'
+        suburb: 'suburb'
+        stateCode: {}
+        id: 'id'
+        apartmentNumber: 'apartmentNumber'
+      methodList:
+        - ''
+        - ''
+      segmentationId: 'segmentationId'
+      customer:
+        receiveSmsUpdates: true
+        customerId: 'customerId'
+        name: 'name'
+        encryptedEmail: 'encryptedEmail'
+        isLoggedIn: true
+        email: {}
+  OrderRequest:
+    type: 'object'
+    required:
+      - 'basketId'
+    properties:
+      basketId:
+        description: 'The id of the basket associated with this order'
+        $ref: '#/definitions/BasketId'
+      paymentInstrument:
+        description: 'The payment instrument used to pay for this basket'
+        $ref: '#/definitions/PaymentInstrument'
+      authorizedPaymentInstrument:
+        description:
+          "The authorized payment instrument used for submitting order\
+          \ with Hosted Payment Page method"
+        $ref: '#/definitions/authorizedPaymentInstrument'
+      encryptedInstrument:
+        type: 'string'
+        description: 'The encrypted instrument information'
+      fingerprint:
+        type: 'string'
+        description: 'The payment provider fingerprint'
+  PaymentInstrument:
+    required:
+      - 'paymentMethodId'
+    properties:
+      id:
+        type: 'string'
+        description: 'The unique payment instrument id'
+      amount:
+        description: 'The payment transaction amount'
+        $ref: '#/definitions/Price'
+      cardType:
+        type: 'string'
+        description: 'Card type. example; VISA'
+      expirationMonth:
+        type: 'number'
+        description: 'It represents expiration month of card'
+      expirationYear:
+        type: 'number'
+        description: 'It represents expiration year of card'
+      holder:
+        type: 'string'
+        description: 'The name written on payment card'
+      lastFour:
+        type: 'string'
+        description: 'It shows the last 4 digit of card'
+      paymentMethodId:
+        type: 'string'
+        description: 'The payment method id. example; CREDIT_CARD'
+      balance:
+        type: 'number'
+        description: 'The total current balance on the gift card'
+      maskedGiftCardNumber:
+        type: 'string'
+        description: 'The masked gift card number'
+    example:
+      expirationYear: 7.061401241503109105224211816675961017608642578125
+      lastFour: 'lastFour'
+      maskedGiftCardNumber: 'maskedGiftCardNumber'
+      balance: 9.301444243932575517419536481611430644989013671875
+      paymentMethodId: 'paymentMethodId'
+      cardType: 'cardType'
+      holder: 'holder'
+      id: 'id'
+      expirationMonth: 2.3021358869347654518833223846741020679473876953125
+  authorizedPaymentInstrument:
+    required:
+      - 'authResult'
+      - 'merchantReference'
+      - 'merchantSig'
+      - 'paymentMethod'
+      - 'pspReference'
+      - 'shopperLocale'
+      - 'skinCode'
+    properties:
+      authResult:
+        type: 'string'
+        description: 'Payment authentication results we have from payment provider'
+      merchantReference:
+        type: 'string'
+        description: 'Merchant reference value received from payment provider'
+      merchantSig:
+        type: 'string'
+        description:
+          "Merchant signature value received from payment provider on previous\
+          \ step"
+      paymentMethod:
+        type: 'string'
+        description: 'The payment method id. For example "paypal"'
+      pspReference:
+        type: 'string'
+        description: 'Payment reference reference value received from payment provider'
+      shopperLocale:
+        type: 'string'
+        description: 'The locale of the ecom shop.'
+      skinCode:
+        type: 'string'
+        description: 'Skip code value received from payment provider'
+    example:
+      authResult: 'AUTHORISED'
+      merchantReference: 'AIE99999999'
+      merchantSig: 'JFUXDySRdDCzNQEmohodfklashdfsdfKUk='
+      paymentMethod: 'paypal'
+      pspReference: 8515512816245811
+      shopperLocale: 'en_IE'
+      skinCode: '0aYDtTjE'
+  Discount:
+    required:
+      - 'id'
+      - 'name'
+      - 'price'
+    properties:
+      id:
+        type: 'string'
+        description: 'The unique id of promotion'
+      name:
+        type: 'string'
+        description: 'The name of promotion'
+      price:
+        $ref: '#/definitions/Price'
+      calloutMessage:
+        type: 'string'
+        description: 'Callout message of promotion. It can be an HTML content'
+      couponItemId:
+        type: 'string'
+        description: "it's used to link coupon item id in couponList attribute"
+    example:
+      calloutMessage: 'calloutMessage'
+      couponItemId: 'couponItemId'
+      name: 'name'
+      id: 'id'
+  Coupon:
+    type: 'object'
+    required:
+      - 'couponCode'
+    properties:
+      id:
+        type: 'string'
+        description: 'The unique id of coupon'
+      couponCode:
+        type: 'string'
+        description: 'The voucher code consumers can apply on basket'
+      statusCode:
+        type: 'string'
+        description: 'Enum of string'
+        enum:
+          - 'coupon_code_already_in_basket'
+          - 'coupon_code_already_redeemed'
+          - 'coupon_code_unknown'
+          - 'coupon_disabled'
+          - 'redemption_limit_exceeded'
+          - 'customer_redemption_limit_exceeded'
+          - 'timeframe_redemption_limit_exceeded'
+          - 'no_active_promotion'
+          - 'coupon_already_in_basket'
+          - 'no_applicable_promotion'
+          - 'applied'
+          - 'adhoc'
+      valid:
+        type: 'boolean'
+        description:
+          "A flag indicating whether the coupon item is valid. A coupon\
+          \ line item is valid if the status code is 'applied' or 'no_applicable_promotion'."
+      message:
+        type: 'string'
+        description: "Localized message regarding status code. It's a plain text"
+    example:
+      valid: true
+      id: 'id'
+      message: 'message'
+      couponCode: 'couponCode'
+      statusCode: 'coupon_code_already_in_basket'
+  TaxSimulation:
+    type: 'object'
+    required:
+      - 'total'
+      - 'totalTax'
+    properties:
+      total:
+        description: 'The total of the basket with the simulated tax'
+        $ref: '#/definitions/Price'
+      totalTax:
+        description: 'The total tax calculated.'
+        $ref: '#/definitions/Price'
+  LineItemContainerPricing:
+    required:
+      - 'baseTotal'
+      - 'productTotal'
+      - 'productTotalBeforeDiscounts'
+      - 'productTotalBeforeOrderDiscounts'
+      - 'shippingBaseTotal'
+      - 'shippingTotal'
+      - 'total'
+      - 'totalTax'
+    properties:
+      total:
+        description:
+          "The total of the basket, this includes discounts, line items\
+          \ and shipping. If the taxation policy is GROSS, it also includes tax. If\
+          \ the taxation policy is NET, it does not include tax"
+        $ref: '#/definitions/Price'
+      baseTotal:
+        description:
+          "The total of the basket before order level discounts, this includes\
+          \ line item discounts, line items and shipping. If the taxation policy is\
+          \ GROSS, it also includes tax. If the taxation policy is NET, it does not\
+          \ include tax"
+        $ref: '#/definitions/Price'
+      totalTax:
+        description:
+          "The total tax amount. This includes shipping and line item tax\
+          \ as well as tax reductions through all discounts"
+        $ref: '#/definitions/Price'
+      productTotal:
+        description:
+          "The total of the line items this excludes shipping costs and\
+          \ order level discounts, but includes line item discounts"
+        $ref: '#/definitions/Price'
+      productTotalBeforeDiscounts:
+        description:
+          "The total of line items, excluding shipping costs, order level\
+          \ discounts and line item discounts"
+        $ref: '#/definitions/Price'
+      productTotalBeforeOrderDiscounts:
+        description:
+          "The total of line items, excluding shipping costs and order\
+          \ level discounts"
+        $ref: '#/definitions/Price'
+      shippingTotal:
+        description: 'The total shipping costs including shipping discounts'
+        $ref: '#/definitions/Price'
+      shippingBaseTotal:
+        description: 'The total of the shipping costs before discounts'
+        $ref: '#/definitions/Price'
+    example: {}
+  ProductLineItem:
+    required:
+      - 'canonicalProductName'
+      - 'color'
+      - 'gender'
+      - 'isFlashProduct'
+      - 'itemId'
+      - 'pricing'
+      - 'productId'
+      - 'productImage'
+      - 'productName'
+      - 'quantity'
+      - 'size'
+    properties:
+      itemId:
+        type: 'string'
+        description: 'The unique id of product line items'
+      productId:
+        $ref: '#/definitions/ProductId'
+      productName:
+        type: 'string'
+      canonicalProductName:
+        type: 'string'
+      productImage:
+        type: 'string'
+        pattern: "^http(s)?:\\/\\/"
+      quantity:
+        type: 'integer'
+        format: 'int32'
+        minimum: 1
+        maximum: 100
+      pricing:
+        $ref: '#/definitions/LineItemPricing'
+      gender:
+        type: 'string'
+      color:
+        type: 'string'
+      size:
+        type: 'string'
+        description: 'size information'
+      discountList:
+        type: 'array'
+        items:
+          $ref: '#/definitions/Discount'
+      allowedActions:
+        $ref: '#/definitions/AllowedAction'
+      personalizationFields:
+        type: 'object'
+        properties: {}
+      maxQuantityAllowed:
+        type: 'integer'
+        description: 'It determines the quantity consumer can add'
+      isBonusProduct:
+        type: 'boolean'
+        description: 'It determines whether product is a bonus product.'
+      productType:
+        type: 'string'
+        description: 'It determines the type of product'
+        enum:
+          - 'INLINE'
+          - 'PRE_ORDER'
+          - 'MIADIDAS'
+          - 'YOURREEBOK'
+          - 'PERSONALIZED'
+      editLinkCustomizableProduct:
+        type: 'string'
+        description: 'It is the link of PDP where consumer can edit customized products'
+      availableStock:
+        type: 'integer'
+        description:
+          "It shows ATS value of inventory. In CHK-API, we should set to\
+          \ 15 if ATS is 15 or more than 15. We should set to actual value of ATS\
+          \ if ATS is less than 15. Therefore we're align with the logic of PDP. We\
+          \ don't want to expose exact stock information to client side."
+      lastAdded:
+        type: 'boolean'
+        description:
+          "true when product line item was added last. Optional, only available\
+          \ after add item request."
+      isFlashProduct:
+        type: 'boolean'
+        description: 'true when the product is a flash product'
+    example:
+      discountList:
+        - calloutMessage: 'calloutMessage'
+          couponItemId: 'couponItemId'
+          name: 'name'
+          id: 'id'
+        - calloutMessage: 'calloutMessage'
+          couponItemId: 'couponItemId'
+          name: 'name'
+          id: 'id'
+      quantity: 60
+      productId: {}
+      gender: 'gender'
+      color: 'color'
+      canonicalProductName: 'canonicalProductName'
+      availableStock: 5
+      allowedActions:
+        edit: true
+        delete: true
+        moveToWishlist: true
+      personalizationFields: '{}'
+      productName: 'productName'
+      maxQuantityAllowed: 1
+      itemId: 'itemId'
+      productImage: 'productImage'
+      size: 'size'
+      editLinkCustomizableProduct: 'editLinkCustomizableProduct'
+      isBonusProduct: true
+      lastAdded: true
+      isFlashProduct: true
+      pricing:
+        baseUnitPrice: {}
+      productType: 'INLINE'
+  AllowedAction:
+    required:
+      - 'delete'
+      - 'edit'
+      - 'moveToWishlist'
+    properties:
+      delete:
+        type: 'boolean'
+        description: 'It determines if deleting product is allowed'
+      edit:
+        type: 'boolean'
+        description: 'It determines if editing product is allowed'
+      moveToWishlist:
+        type: 'boolean'
+        description: 'It determines if moving product to wishlist is allowed'
+    example:
+      edit: true
+      delete: true
+      moveToWishlist: true
+  TaxBreakdown:
+    properties:
+      name:
+        type: 'string'
+        description: 'The name of the field to be displayed on each tax breakdown.'
+      value:
+        type: 'string'
+        description: 'The value of the field to bed displayed on each tax breakdown'
+    example:
+      name: 'name'
+      value: 'value'
+  BillingAddress:
+    properties:
+      id:
+        type: 'string'
+        description: 'The unique address id'
+      address1:
+        type: 'string'
+        description: 'The address line 1 information'
+      address2:
+        type: 'string'
+        description: 'The address line 2 information'
+      city:
+        type: 'string'
+        description: 'City information'
+      country:
+        type: 'string'
+        description: 'Country information'
+      zipcode:
+        type: 'string'
+        description: 'Zipcode information'
+      stateCode:
+        description: 'The two digit code for a state'
+        $ref: '#/definitions/StateCode'
+      firstName:
+        type: 'string'
+        description: 'First name information'
+      lastName:
+        type: 'string'
+        description: 'Last name information'
+      countyProvince:
+        type: 'string'
+        description: 'County province information'
+      companyName:
+        type: 'string'
+        description: 'Company name information'
+      apartmentNumber:
+        type: 'string'
+        description: 'Apartment number information'
+      houseNumber:
+        type: 'string'
+        description: 'House number information'
+      suburb:
+        type: 'string'
+        description: 'Suburb information'
+      island:
+        type: 'string'
+        description: 'Island information'
+    description: 'Required Fields are market specific and defined via configurations'
+    example:
+      country: 'country'
+      lastName: 'lastName'
+      address2: 'address2'
+      city: 'city'
+      address1: 'address1'
+      island: 'island'
+      companyName: 'companyName'
+      houseNumber: 'houseNumber'
+      zipcode: 'zipcode'
+      firstName: 'firstName'
+      countyProvince: 'countyProvince'
+      suburb: 'suburb'
+      stateCode: {}
+      id: 'id'
+      apartmentNumber: 'apartmentNumber'
+  CnCStoreModification:
+    type: 'object'
+    properties:
+      cncStoreId:
+        type: 'string'
+        description:
+          "Click and Collect store id to set the store or null to remove\
+          \ it"
+      lon:
+        type: 'number'
+        description: 'Longitude'
+      lat:
+        type: 'number'
+        description: 'Latitude'
+  PUDOModification:
+    type: 'object'
+    properties:
+      pudoId:
+        type: 'string'
+        description: 'The id for the PUDO box that the customer will pickup his package'
+      postNumber:
+        type: 'string'
+        description: 'The customer postnumber id that he will use to pickup his package'
+  ShippingAddress:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+        description: 'The unique address id'
+      address1:
+        type: 'string'
+        description: 'The address line 1 information'
+      address2:
+        type: 'string'
+        description: 'The address line 2 information'
+      city:
+        type: 'string'
+        description: 'City information'
+      country:
+        type: 'string'
+        description: 'Country information'
+      zipcode:
+        type: 'string'
+        description: 'Zipcode information'
+      stateCode:
+        description: 'The two digit code for a state'
+        $ref: '#/definitions/StateCode'
+      firstName:
+        type: 'string'
+        description: 'First name information'
+      lastName:
+        type: 'string'
+        description: 'Last name information'
+      phoneNumber:
+        type: 'string'
+        description: "Consumer's phone number"
+      countyProvince:
+        type: 'string'
+        description: 'County province information'
+      companyName:
+        type: 'string'
+        description: 'Company name information'
+      apartmentNumber:
+        type: 'string'
+        description: 'Apartment number information'
+      houseNumber:
+        type: 'string'
+        description: 'House number information'
+      suburb:
+        type: 'string'
+        description: 'Suburb information'
+      island:
+        type: 'string'
+        description: 'Island information'
+      useAsBillingAddress:
+        type: 'boolean'
+        description:
+          "The flag indicating whether the given address will also be used\
+          \ as billing address."
+    description: 'Required Fields are market specific and defined via configurations'
+    example:
+      country: 'country'
+      lastName: 'lastName'
+      address2: 'address2'
+      city: 'city'
+      address1: 'address1'
+      island: 'island'
+      companyName: 'companyName'
+      houseNumber: 'houseNumber'
+      zipcode: 'zipcode'
+      firstName: 'firstName'
+      countyProvince: 'countyProvince'
+      phoneNumber: 'phoneNumber'
+      suburb: 'suburb'
+      id: 'id'
+      useAsBillingAddress: true
+      apartmentNumber: 'apartmentNumber'
+  Shipment:
+    required:
+      - 'productLineItemList'
+      - 'shipmentId'
+      - 'shippingLineItem'
+    properties:
+      shipmentId:
+        type: 'string'
+        description: 'The unique id of shipment'
+      shippingOnDate:
+        description: 'the date of shipping starts for backorder and preorder products.'
+        $ref: '#/definitions/Date'
+      shipmentType:
+        type: 'string'
+        description:
+          "Identify shipment type; inline, miadidas, preorder, backorderm\
+          \ yourreebok"
+        enum:
+          - 'inline'
+          - 'miadidas'
+          - 'preorder'
+          - 'backorder'
+          - 'yourreebok'
+      productLineItemList:
+        type: 'array'
+        items:
+          $ref: '#/definitions/ProductLineItem'
+      shippingLineItem: {}
+    example:
+      shippingOnDate: {}
+      shippingLineItem: ''
+      shipmentId: 'shipmentId'
+      productLineItemList:
+        - discountList:
+            - calloutMessage: 'calloutMessage'
+              couponItemId: 'couponItemId'
+              name: 'name'
+              id: 'id'
+            - calloutMessage: 'calloutMessage'
+              couponItemId: 'couponItemId'
+              name: 'name'
+              id: 'id'
+          quantity: 60
+          productId: {}
+          gender: 'gender'
+          color: 'color'
+          canonicalProductName: 'canonicalProductName'
+          availableStock: 5
+          allowedActions:
+            edit: true
+            delete: true
+            moveToWishlist: true
+          personalizationFields: '{}'
+          productName: 'productName'
+          maxQuantityAllowed: 1
+          itemId: 'itemId'
+          productImage: 'productImage'
+          size: 'size'
+          editLinkCustomizableProduct: 'editLinkCustomizableProduct'
+          isBonusProduct: true
+          lastAdded: true
+          isFlashProduct: true
+          pricing:
+            baseUnitPrice: {}
+          productType: 'INLINE'
+        - discountList:
+            - calloutMessage: 'calloutMessage'
+              couponItemId: 'couponItemId'
+              name: 'name'
+              id: 'id'
+            - calloutMessage: 'calloutMessage'
+              couponItemId: 'couponItemId'
+              name: 'name'
+              id: 'id'
+          quantity: 60
+          productId: {}
+          gender: 'gender'
+          color: 'color'
+          canonicalProductName: 'canonicalProductName'
+          availableStock: 5
+          allowedActions:
+            edit: true
+            delete: true
+            moveToWishlist: true
+          personalizationFields: '{}'
+          productName: 'productName'
+          maxQuantityAllowed: 1
+          itemId: 'itemId'
+          productImage: 'productImage'
+          size: 'size'
+          editLinkCustomizableProduct: 'editLinkCustomizableProduct'
+          isBonusProduct: true
+          lastAdded: true
+          isFlashProduct: true
+          pricing:
+            baseUnitPrice: {}
+          productType: 'INLINE'
+      shipmentType: 'inline'
+  ShippingLineItem:
+    required:
+      - 'id'
+      - 'name'
+      - 'pricing'
+    properties:
+      name:
+        type: 'string'
+        description: 'The name of shipping method'
+      description:
+        type: 'string'
+        description: 'The explanation of shipping method'
+      id:
+        type: 'string'
+        description: 'The unique shipping method id'
+      pricing:
+        description: 'The price information'
+        $ref: '#/definitions/LineItemPricing'
+      discountList:
+        type: 'array'
+        description:
+          "The collection of discount. Shipping line item can have multiple\
+          \ discount."
+        items:
+          $ref: '#/definitions/Discount'
+      carrierServiceName:
+        type: 'string'
+        description: 'Carier service name'
+      delivery:
+        description: 'The delivery range of shipment'
+        $ref: '#/definitions/TimeInterval'
+  ShippingMethod:
+    required:
+      - 'id'
+    properties:
+      id:
+        type: 'string'
+        description: 'Unique identification of shipping method.'
+      type:
+        type: 'array'
+        description: 'Determines the type of shipping method.'
+        items:
+          $ref: '#/definitions/ShippingMethodType'
+      name:
+        type: 'string'
+        description: 'Name of shipping method.'
+      description:
+        type: 'string'
+        description: 'Description of shipping method.'
+      carrierName:
+        type: 'string'
+        description: 'The name of service which delivers order'
+      carrierCode:
+        type: 'string'
+        description: 'Carier code'
+      carrierServiceCode:
+        type: 'string'
+        description: 'Carier service code'
+      carrierServiceName:
+        type: 'string'
+        description: 'Carier service name'
+      groupCodes:
+        type: 'array'
+        description: 'Carier group codes'
+        items:
+          $ref: '#/definitions/GroupCodesType'
+      collection:
+        description: 'The collection time interval of the shipping method'
+        $ref: '#/definitions/TimeInterval'
+      delivery:
+        description: 'The delivery time interval of the shipping method'
+        $ref: '#/definitions/TimeInterval'
+      price:
+        description: 'The cost of shipping method.'
+        $ref: '#/definitions/Price'
+      isDefault:
+        type: 'boolean'
+        description: 'It shows whether shipping method is default'
+      shipmentId:
+        type: 'string'
+        description:
+          "It represents the identifiaction what shipping method belongs\
+          \ to"
+      delayMessage:
+        type: 'string'
+        description: 'Message informing of the potential delay'
+  TimeInterval:
+    properties:
+      from:
+        type: 'number'
+        description: 'The start time of the interval (in ms)'
+      to:
+        type: 'number'
+        description: 'The end time of the interval (in ms)'
+  ShippingMethodType:
+    type: 'string'
+    enum:
+      - 'inline'
+      - 'miadidas'
+      - 'preorder'
+      - 'backorder'
+      - 'yourreebok'
+  GroupCodesType:
+    type: 'string'
+  ApplicablePaymentMethods:
+    type: 'object'
+    required:
+      - 'paymentMethods'
+    properties:
+      paymentMethods:
+        description: 'The array of applicable payment methods for this basket.'
+        $ref: '#/definitions/PaymentMethod'
+      checkoutId:
+        type: 'string'
+        description: 'The checkout id related to this basket.'
+  PaymentMethod:
+    required:
+      - 'id'
+    properties:
+      id:
+        type: 'string'
+        description: 'The id of the payment method or card.'
+      name:
+        type: 'string'
+        description: 'The localized name of the payment method or card.'
+      description:
+        type: 'string'
+        description: 'The localized description of the payment method or card.'
+      cards:
+        description:
+          "The sorted array of payment cards (included only when the system\
+          \ payment method is CREDIT_CARD)."
+        $ref: '#/definitions/PaymentCardSpecification'
+  PaymentCardSpecification:
+    properties:
+      cardType:
+        type: 'string'
+        description: 'The type of the payment card.'
+      name:
+        type: 'string'
+        description: 'The localized description of the payment card.'
+      description:
+        type: 'string'
+        description: 'The localized description of the payment card.'
+      checksumVerificationEnabled:
+        type: 'boolean'
+        description:
+          "A flag indicating whether the card number is verified using\
+          \ the Luhn checksum algorithm."
+      numberLengthList:
+        type: 'array'
+        description:
+          "The sorted list of number lengths (individual lengths as well\
+          \ as length ranges)."
+        items:
+          type: 'string'
+      numberPrefixes:
+        type: 'array'
+        description:
+          "The sorted list of number prefixes (individual prefixes as well\
+          \ as prefix ranges)."
+        items:
+          type: 'string'
+      securityCodeLength:
+        type: 'number'
+        format: 'int32'
+        description: 'The length of the security code for this card.'
+  RefundData:
+    required:
+      - 'accountHolderName'
+      - 'bankName'
+      - 'consumerEuci'
+      - 'currency'
+      - 'iban'
+      - 'refundAmount'
+      - 'returnOrderNumber'
+      - 'shopperDateOfBirth'
+      - 'shopperEmail'
+      - 'shopperFirstName'
+      - 'shopperLastName'
+      - 'shopperNationality'
+    properties:
+      returnOrderNumber:
+        type: 'string'
+        description:
+          "Return Order Number provided by OMS to link payout request to\
+          \ refund case"
+        title: 'Return Order Number'
+        minLength: 10
+        maxLength: 30
+      refundAmount:
+        type: 'number'
+        description:
+          "Amount of money in local currency to be refunded (decimal value\
+          \ is used). This value will be validated before any money is processed"
+        minimum: 1
+        maximum: 100000
+      currency:
+        type: 'string'
+        description:
+          "3-character Adyen currency code for the amount refunded. This\
+          \ value will be validated before any money is processed"
+        minLength: 3
+        maxLength: 3
+      shopperEmail:
+        type: 'string'
+        description: 'Email of the consumer who initiated refund request'
+      shopperFirstName:
+        type: 'string'
+        description: 'The first name of the customer who initiated the refund request'
+      shopperLastName:
+        type: 'string'
+        description: 'The last name of the customer who initiated the refund request'
+      shopperNationality:
+        type: 'string'
+        description: 'ISO 2-character country code'
+        minLength: 2
+        maxLength: 2
+      shopperDateOfBirth:
+        type: 'string'
+        description: "Birthdate of the consumer, in 'ISO-8601' format YYYY-MM-DD"
+        minLength: 10
+        maxLength: 10
+      consumerEuci:
+        type: 'string'
+        description: 'eUCI of the consumer, provided by backend system'
+        minLength: 14
+        maxLength: 18
+      accountHolderName:
+        type: 'string'
+        description: 'Full name of the bank account holder (name and surname)'
+        minLength: 2
+        maxLength: 256
+      bankName:
+        type: 'string'
+        description: 'Name of the bank institute'
+        minLength: 18
+        maxLength: 40
+      iban:
+        type: 'string'
+        description: 'International Bank Account Number in Europe'
+        minLength: 2
+        maxLength: 256
+    example:
+      refundData:
+        returnOrderNumber: 'APL10003063_501811221049014308291673'
+        refundAmount: 399.94999999999998863131622783839702606201171875
+        currency: 'EUR'
+        shopperDateOfBirth: '1920-01-01T00:00:00.000Z'
+        shopperEmail: 'test@test.com'
+        shopperNationality: 'DE'
+        consumerEuci: 'GUQHYZCPVBQHORMX'
+      bankData:
+        accountHolderName: 'Adi Dassler'
+        bankName: 'Sparkasse Erlangen'
+        iban: 'DE8300000003459543223'
+  SuccessfulRefundRequest:
+    required:
+      - 'message'
+      - 'status'
+    properties:
+      message:
+        type: 'string'
+        description: 'A human-readable message about status of the request'
+      status:
+        type: 'string'
+        description: 'A status code in camelCase describing a status category or type'
+    example:
+      message: 'The refund request was successfully submitted to the Payment Provider'
+      status: 'Successful'
+  MasterProductId:
+    type: 'string'
+    pattern: '^[A-Z0-9]{2,6}'
+  ProductId:
+    type: 'string'
+    pattern: '^[A-Z0-9]{2,6}_?[0-9]{3}?$'
+  BasketId:
+    type: 'string'
+    pattern: '^[a-z0-9]{26}$'
+    x-example: '00000000000000000000000000'
+  CustomerEmail:
+    type: 'string'
+    pattern: "^([a-zA-Z0-9_\\-\\.\\+]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,18})$"
+    x-example: 'customer.email@mail.com'
+  Price:
+    type: 'number'
+    pattern: "^\\d+((,|.)\\d{2})?$"
+  LineItemPricing:
+    required:
+      - 'basePrice'
+      - 'price'
+    properties:
+      baseUnitPrice:
+        $ref: '#/definitions/Price'
+      unitPrice:
+        $ref: '#/definitions/Price'
+      basePrice:
+        $ref: '#/definitions/Price'
+      price:
+        $ref: '#/definitions/Price'
+      priceAfterAllDiscounts:
+        $ref: '#/definitions/Price'
+      unitPriceWithoutTax:
+        $ref: '#/definitions/Price'
+    example:
+      baseUnitPrice: {}
+  ErrorResponse:
+    type: 'object'
+    required:
+      - 'message'
+    properties:
+      message:
+        type: 'string'
+        description: 'A human-readable message about the error'
+      errorCode:
+        type: 'string'
+        description:
+          "A code message in camelCase describing a error category or type\
+          \ (ie. BasketNotFound)"
+      messageList:
+        description: 'Additional information provided by SFCC OCAPI response'
+      details:
+        $ref: '#/definitions/ErrorResponse_details'
+  Error400Response:
+    type: 'object'
+    properties:
+      errorCode:
+        type: 'string'
+        description:
+          "A code message in camelCase describing a error category or type\
+          \ (ie. InvalidParameters)"
+      messageList:
+        description: 'Additional information, for example a list of missing fields'
+  DateTime:
+    type: 'string'
+    description: 'ISO8601 Timestamp'
+  Date:
+    type: 'string'
+    description: 'ISO8601 Date'
+  StateCode:
+    type: 'string'
+  ShopperResultUrl:
+    type: 'object'
+    properties:
+      shopperResultUrl:
+        type: 'string'
+        example: 'https://adidas.com/callback/PAYPAL'
+        description:
+          "The URL used by payment Hosted Pages such as Paypal for handling\
+          \ callbacks from third party applications"
+  PickupPoint:
+    type: 'object'
+    properties:
+      cncStore:
+        description: 'Pickup point store if using CnC'
+        $ref: '#/definitions/Store'
+      pudoStore:
+        description:
+          "A pickup point (ie. Paketstation, DHL Boxes, etc) if using PUDO\
+          \ Delivery"
+        $ref: '#/definitions/Store'
+    description: 'Pickup point details'
+    example:
+      cncStore:
+        country: 'GR'
+        telephoneNumber: '+358 10 123 1123'
+        distance: 1.113520056782399958450469057424925267696380615234375
+        city: 'Athens'
+        postalCode: '1000AB'
+        latitude: 37.97681879999999665642462787218391895294189453125
+        daysToWaitForDelivery: 3
+        deliveryWindow:
+          from: 1
+          to: 1
+        street: 'Ermou Street 50'
+        name: 'adidas Store Athens, Ermou Street,'
+        openingHours:
+          sunday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          saturday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          tuesday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          wednesday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          thursday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          friday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          monday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+        id: 'GR342248,'
+        state: 'MOW'
+        longitude: 23.72885409999999950514393276534974575042724609375
+      pudoStore:
+        country: 'GR'
+        telephoneNumber: '+358 10 123 1123'
+        distance: 1.113520056782399958450469057424925267696380615234375
+        city: 'Athens'
+        postalCode: '1000AB'
+        latitude: 37.97681879999999665642462787218391895294189453125
+        daysToWaitForDelivery: 3
+        deliveryWindow:
+          from: 1
+          to: 1
+        street: 'Ermou Street 50'
+        name: 'adidas Store Athens, Ermou Street,'
+        openingHours:
+          sunday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          saturday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          tuesday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          wednesday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          thursday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          friday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+          monday:
+            endHours: 18
+            startHours: 9
+            startMinutes: 0
+            endMinutes: 30
+        id: 'GR342248,'
+        state: 'MOW'
+        longitude: 23.72885409999999950514393276534974575042724609375
+  Store:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+        example: 'GR342248,'
+        description: 'Unique store ID'
+      name:
+        type: 'string'
+        example: 'adidas Store Athens, Ermou Street,'
+        description: 'Store name'
+      street:
+        type: 'string'
+        example: 'Ermou Street 50'
+        description: 'Street'
+      city:
+        type: 'string'
+        example: 'Athens'
+        description: 'City'
+      postalCode:
+        type: 'string'
+        example: '1000AB'
+        description: 'Postal code'
+      telephoneNumber:
+        type: 'string'
+        example: '+358 10 123 1123'
+      state:
+        type: 'string'
+        example: 'MOW'
+      country:
+        type: 'string'
+        example: 'GR'
+        description: 'Street'
+        pattern: '[A-Z]{2}'
+      distance:
+        type: 'number'
+        example: 1.113520056782399958450469057424925267696380615234375
+        description: 'Distance to search location in km'
+      latitude:
+        type: 'number'
+        example: 37.97681879999999665642462787218391895294189453125
+      longitude:
+        type: 'number'
+        example: 23.72885409999999950514393276534974575042724609375
+      openingHours:
+        $ref: '#/definitions/StoreOpeningHours'
+      daysToWaitForDelivery:
+        type: 'number'
+        example: 3
+        description:
+          "Number of days required to deliver products in store. When 0,\
+          \ products are in store and can be picked up today."
+      deliveryWindow:
+        $ref: '#/definitions/Store_deliveryWindow'
+    description:
+      "A store from where items can be picked from along with address and\
+      \ open hours"
+    example:
+      country: 'GR'
+      telephoneNumber: '+358 10 123 1123'
+      distance: 1.113520056782399958450469057424925267696380615234375
+      city: 'Athens'
+      postalCode: '1000AB'
+      latitude: 37.97681879999999665642462787218391895294189453125
+      daysToWaitForDelivery: 3
+      deliveryWindow:
+        from: 1
+        to: 1
+      street: 'Ermou Street 50'
+      name: 'adidas Store Athens, Ermou Street,'
+      openingHours:
+        sunday:
+          endHours: 18
+          startHours: 9
+          startMinutes: 0
+          endMinutes: 30
+        saturday:
+          endHours: 18
+          startHours: 9
+          startMinutes: 0
+          endMinutes: 30
+        tuesday:
+          endHours: 18
+          startHours: 9
+          startMinutes: 0
+          endMinutes: 30
+        wednesday:
+          endHours: 18
+          startHours: 9
+          startMinutes: 0
+          endMinutes: 30
+        thursday:
+          endHours: 18
+          startHours: 9
+          startMinutes: 0
+          endMinutes: 30
+        friday:
+          endHours: 18
+          startHours: 9
+          startMinutes: 0
+          endMinutes: 30
+        monday:
+          endHours: 18
+          startHours: 9
+          startMinutes: 0
+          endMinutes: 30
+      id: 'GR342248,'
+      state: 'MOW'
+      longitude: 23.72885409999999950514393276534974575042724609375
+  StoreOpeningHours:
+    type: 'object'
+    properties:
+      monday:
+        $ref: '#/definitions/WorkingTime'
+      tuesday:
+        $ref: '#/definitions/WorkingTime'
+      wednesday:
+        $ref: '#/definitions/WorkingTime'
+      thursday:
+        $ref: '#/definitions/WorkingTime'
+      friday:
+        $ref: '#/definitions/WorkingTime'
+      saturday:
+        $ref: '#/definitions/WorkingTime'
+      sunday:
+        $ref: '#/definitions/WorkingTime'
+    example:
+      sunday:
+        endHours: 18
+        startHours: 9
+        startMinutes: 0
+        endMinutes: 30
+      saturday:
+        endHours: 18
+        startHours: 9
+        startMinutes: 0
+        endMinutes: 30
+      tuesday:
+        endHours: 18
+        startHours: 9
+        startMinutes: 0
+        endMinutes: 30
+      wednesday:
+        endHours: 18
+        startHours: 9
+        startMinutes: 0
+        endMinutes: 30
+      thursday:
+        endHours: 18
+        startHours: 9
+        startMinutes: 0
+        endMinutes: 30
+      friday:
+        endHours: 18
+        startHours: 9
+        startMinutes: 0
+        endMinutes: 30
+      monday:
+        endHours: 18
+        startHours: 9
+        startMinutes: 0
+        endMinutes: 30
+  WorkingTime:
+    type: 'object'
+    properties:
+      startHours:
+        type: 'number'
+        example: 9
+      startMinutes:
+        type: 'number'
+        example: 0
+      endHours:
+        type: 'number'
+        example: 18
+      endMinutes:
+        type: 'number'
+        example: 30
+    description: 'Store working hours; empty object when store is closed'
+    example:
+      endHours: 18
+      startHours: 9
+      startMinutes: 0
+      endMinutes: 30
+  GiftCertificateBalance:
+    type: 'object'
+    required:
+      - 'cardNumber'
+      - 'pinNumber'
+    properties:
+      cardNumber:
+        type: 'string'
+        description: 'The gift card number'
+        pattern: '^[0-9]{19}$'
+      pinNumber:
+        type: 'string'
+        description: 'The pin number of the gift card'
+        pattern: '^[0-9]{4}$'
+      balance:
+        type: 'number'
+        description: 'The total current balance on the gift card'
+  Basket_taxBreakDown:
+    type: 'object'
+    properties:
+      GST:
+        type: 'number'
+        description: 'Goods and Services Tax'
+      PST:
+        type: 'number'
+        description: 'Provincial Sales Tax'
+      HST:
+        type: 'number'
+        description: 'Harmonized Sales Tax'
+      QST:
+        type: 'number'
+        description: 'Quebec Sales Tax'
+    example:
+      PST: 2.027123023002321833274663731572218239307403564453125
+      QST: 7.3862819483858839220147274318151175975799560546875
+      HST: 4.1456080298839363962315474054776132106781005859375
+      GST: 3.61607674925191080461672754609026014804840087890625
+  ErrorResponse_details:
+    type: 'object'
+    properties:
+      availableQuantity:
+        type: 'number'
+        example: 9
+        description: 'Currently available stock for item that user is trying to order'
+    description:
+      "A machine-readable error details that can be used for displaying\
+      \ error on API consumer side"
+  Store_deliveryWindow:
+    type: 'object'
+    properties:
+      from:
+        type: 'number'
+        example: 1
+      to:
+        type: 'number'
+        example: 1
+    description:
+      "An estimation range for the days days required to deliver products\
+      \ in store. When numbers are the same, there's no uncertainty about the pickup\
+      \ time. When 0, products are in store and can be picked up today."
+    example:
+      from: 1
+      to: 1
+parameters:
+  basket_id:
+    name: 'basket_id'
+    in: 'path'
+    description: 'It represents basket unique identifier'
+    required: true
+    type: 'string'
+    pattern: '^[a-z0-9]{26}$'
+  address_id:
+    name: 'address_id'
+    in: 'path'
+    description: 'It represents unique identifier of address'
+    required: true
+    type: 'string'
+    pattern: '^[a-z0-9]{26}$'
+  payment_method_id:
+    name: 'payment_method_id'
+    in: 'path'
+    description: "It's a payment method identifier"
+    required: true
+    type: 'string'
+  gift_certificate_id:
+    name: 'gift_certificate_id'
+    in: 'path'
+    description: 'Payment Instrument ID in Commerce Cloud'
+    required: true
+    type: 'string'
+  order_id:
+    name: 'order_id'
+    in: 'path'
+    description: 'The order id'
+    required: true
+    type: 'string'

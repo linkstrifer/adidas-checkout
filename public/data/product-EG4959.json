@@ -1,0 +1,285 @@
+{
+  "id": "EG4959",
+  "name": "Superstar Shoes",
+  "model_number": "GVS47",
+  "product_type": "inline",
+  "meta_data": {
+    "page_title": "adidas Superstar Shoes - Black | adidas US",
+    "site_name": "adidas United States",
+    "description": "Shop the Superstar Shoes - Black at adidas.com/us! See all the styles and colors of Superstar Shoes - Black at the official adidas online shop.",
+    "keywords": "Superstar Shoes",
+    "canonical": "//www.adidas.com/us/superstar-shoes/EG4959.html"
+  },
+  "view_list": [
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/15f901c90a9549d29104aae700d27efb_9366/Superstar_Shoes_Black_EG4959_01_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "videoasset",
+      "image_url": "https://assets.adidas.com/videos/w_600,f_auto,q_auto/f3b90d6a5a9547fd8409aad300853a34_d98c/Superstar_Shoes_Black_EG4959_video.jpg",
+      "video_url": "https://assets.adidas.com/videos/t_videomain/f3b90d6a5a9547fd8409aad300853a34_d98c/Superstar_Shoes_Black_EG4959_video.mp4",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "other",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/86360ca03e1849a488daab1400f8dcf2_9366/Superstar_Shoes_Black_EG4959_HM1.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/4785b631bbf64d648245aae601100c28_9366/Superstar_Shoes_Black_EG4959_010_hover_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/ff0654f4089f4413baa7aae700d2a08c_9366/Superstar_Shoes_Black_EG4959_02_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/9aa935080d1849a1829daae700d2aba1_9366/Superstar_Shoes_Black_EG4959_03_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/7c365af056f34e6bacf4aae700d2b7fe_9366/Superstar_Shoes_Black_EG4959_04_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/ebe5146ef13d4d9096a5aae700d2c437_9366/Superstar_Shoes_Black_EG4959_05_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/14051792ebf5402ea618aae700d296a1_9366/Superstar_Shoes_Black_EG4959_06_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "standard",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/095c778f23ef49799838aae700d28a41_9366/Superstar_Shoes_Black_EG4959_07_standard.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "detail",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/37cbe7a6558446849011aae700d2d002_9366/Superstar_Shoes_Black_EG4959_41_detail.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "detail",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/cfc151d900394855a485aae700d2d84b_9366/Superstar_Shoes_Black_EG4959_42_detail.jpg",
+      "source": "CLOUDINARY"
+    },
+    {
+      "type": "detail",
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/2fe415c8fdcc48e9a911aae700d2e388_9366/Superstar_Shoes_Black_EG4959_43_detail.jpg",
+      "source": "CLOUDINARY"
+    }
+  ],
+  "pricing_information": {
+    "standard_price": 80,
+    "standard_price_no_vat": 80,
+    "currentPrice": 80
+  },
+  "attribute_list": {
+    "isWaitingRoomProduct": false,
+    "brand": "Originals",
+    "collection": ["Mini Me", "Under 100", "SS20", "Classic Sneakers"],
+    "category": "Shoes",
+    "color": "Core Black / Cloud White / Core Black",
+    "gender": "U",
+    "personalizable": false,
+    "mandatory_personalization": false,
+    "customizable": false,
+    "pricebook": "adidas-US-listprices",
+    "sale": false,
+    "outlet": false,
+    "isCnCRestricted": false,
+    "sport": ["Lifestyle"],
+    "size_chart_link": "/on/demandware.store/Sites-adidas-US-Site/en_US/Page-Include?cid=size-chart-size-shoes",
+    "preview_to": "2012-12-11T22:00:00.000Z",
+    "coming_soon_signup": false,
+    "productType": ["Athletic & Sneakers"],
+    "sportSub": ["Superstar"],
+    "features": ["Trae Young"],
+    "search_color": "Black",
+    "specialLaunch": false,
+    "search_color_raw": "Black"
+  },
+  "callouts": {
+    "callout_top_stack": [
+      {
+        "id": "pdp-promo-nodiscount",
+        "sub_title": "This product is excluded from all promotional discounts and offers.",
+        "body": "This product is excluded from all promotional discounts codes and other offers."
+      }
+    ],
+    "callout_bottom_stack": [
+      {
+        "id": "pdp-callout-bottom",
+        "title": "FREE SHIPPING OVER $49 + FREE RETURNS & EXCHANGES",
+        "body": "<p>FREE SHIPPING OVER $49 + FREE RETURNS &amp; EXCHANGES</p>\r\n\r\n<p>Spend over $49 and shipping is free! Creators Club members unlock free shipping on any order. Sign up or Login.&nbsp;</p>\r\n\r\n<p>If you are not completely satisfied with your adidas.com purchase, for any reason, we will offer you a free return or exchange within 30 days of purchase. Some restrictions apply.</p>\r\n\r\n<p>Check out our Return Policy for more details.</p>",
+        "link_text": "FREE SHIPPING OVER $49 + FREE RETURNS & EXCHANGES",
+        "iconID": "usp-delivery"
+      },
+      {
+        "id": "pdp-callout-bottom-2",
+        "title": "Buy now, pay over time with PayPal CREDIT",
+        "link_text": "Buy now, pay over time with PayPal CREDIT"
+      }
+    ]
+  },
+  "product_description": {
+    "title": "Superstar Shoes",
+    "subtitle": "The authentic low top with the shell toe.",
+    "text": "Originally made for basketball courts in the '70s. Celebrated by hip hop royalty in the '80s. The adidas Superstar shoe is now a lifestyle staple for streetwear enthusiasts. The world-famous shell toe feature remains, providing style and protection. Just like it did on the B-ball courts back in the day. \n \nNow, whether at a festival or walking in the street you can enjoy yourself without the fear of being stepped on.\n\nThe serrated 3-Stripes detail and adidas Superstar box logo adds OG authenticity to your look.",
+    "usps": [
+      "Lace closure",
+      "Leather upper",
+      "Iconic leather shoes",
+      "Rubber outsole",
+      "Imported"
+    ],
+    "product_highlights": [
+      {
+        "image_reference": "https://assets.adidas.com/images/w_600,f_auto,q_auto/5d43333732644fb79a6aab1400f8e293_9366/Superstar_Shoes_Black_EG4959.jpg",
+        "headline": "Iconic design",
+        "copy": "For over 50 years, the adidas Superstar sneaker has been the go-to of sport and street legends, connecting creators across cultures."
+      },
+      {
+        "image_reference": "https://assets.adidas.com/images/w_600,f_auto,q_auto/8540ead798a94daaac73ab1400f8e89f_9366/Superstar_Shoes_Black_EG4959.jpg",
+        "headline": "Distinctive details",
+        "copy": "The instantly recognizable shell toe is complemented by three serrated stripes and adidas Originals accents."
+      },
+      {
+        "image_reference": "https://assets.adidas.com/images/w_600,f_auto,q_auto/8638a70608bd44db841fab1400f8ed6a_9366/Superstar_Shoes_Black_EG4959.jpg",
+        "headline": "Quality materials",
+        "copy": "Always in style, this classic silhouette features full-grain leather for enhanced durability and comfort."
+      }
+    ],
+    "description_assets": {
+      "image_url": "https://assets.adidas.com/images/w_600,f_auto,q_auto/7c365af056f34e6bacf4aae700d2b7fe_9366/Superstar_Shoes_Black_EG4959.jpg",
+      "video_url": null,
+      "poster_url": null
+    }
+  },
+  "product_link_list": [
+    {
+      "type": "color-variation",
+      "name": "Superstar Shoes",
+      "url": "/us/superstar-shoes/EG4957.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/af405adab99747708f01aad8011626ff_9366/Superstar_Shoes_Black_EG4957_01_standard.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/default/dwf901b717/zoom/EG4957_010_hover_standard.jpg",
+      "pricing_information": {
+        "standard_price": 80
+      },
+      "default_color": "Core Black / Core Black / Core Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "EG4957"
+    },
+    {
+      "type": "color-variation",
+      "name": "Superstar Shoes",
+      "url": "/us/superstar-shoes/EG4958.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/default/dwc6f0dd5a/zoom/EG4958_010_hover_standard.jpg",
+      "pricing_information": {
+        "standard_price": 80
+      },
+      "default_color": "Cloud White / Core Black / Cloud White",
+      "search_color": "White",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "EG4958"
+    },
+    {
+      "type": "color-variation",
+      "name": "Superstar Shoes",
+      "url": "/us/superstar-shoes/EG4960.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/a4d975e141054d24a0eaaae700d36352_9366/Superstar_Shoes_White_EG4960_01_standard.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/default/dw98da4607/zoom/EG4960_010_hover_standard.jpg",
+      "pricing_information": {
+        "standard_price": 80
+      },
+      "default_color": "Cloud White / Cloud White / Cloud White",
+      "search_color": "White",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "EG4960"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "SST Track Pants",
+      "url": "/us/sst-track-pants/CW1275.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/95a625bad40b46aba6caa83a00d1cd37_9366/SST_Track_Pants_Black_CW1275_01_laydown.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dw83c7c751/zoom/CW1275_22_model.jpg",
+      "pricing_information": {
+        "standard_price": 65
+      },
+      "default_color": "Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "CW1275"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "Trefoil Hoodie",
+      "url": "/us/trefoil-hoodie/DT7964.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/14ef3b97b7e8489e90d5a873013bf126_9366/Trefoil_Hoodie_Black_DT7964_21_model.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dwa165199e/zoom/DT7964_22_model.jpg",
+      "pricing_information": {
+        "standard_price": 65
+      },
+      "default_color": "Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "DT7964"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "3-Stripes Shorts",
+      "url": "/us/3-stripes-shorts/DH5798.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/d02dac038dfd4a23ad01a88d01227134_9366/3_Stripes_Shorts_Black_DH5798_01_laydown.jpg",
+      "altImage": "//www.adidas.com/dw/image/v2/aaqx_prd/on/demandware.static/-/Sites-adidas-products/en_US/dwb2ef401a/zoom/DH5798_22_model.jpg",
+      "pricing_information": {
+        "standard_price": 45
+      },
+      "default_color": "Black",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "DH5798"
+    },
+    {
+      "type": "complete-the-look",
+      "name": "Mid-Cut Crew Socks 3 Pairs",
+      "url": "/us/mid-cut-crew-socks-3-pairs/DX9092.html",
+      "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/2cb5097fe0c84ef396fea95400ca61fe_9366/Mid_Cut_Crew_Socks_3_Pairs_Black_DX9092_03_standard.jpg",
+      "pricing_information": {
+        "standard_price": 14
+      },
+      "default_color": "Black / White",
+      "search_color": "Black",
+      "compare_attributes": {},
+      "source": "CLOUDINARY",
+      "productId": "DX9092"
+    }
+  ],
+  "breadcrumb_list": [
+    {
+      "text": "Originals",
+      "link": "/us/originals"
+    },
+    {
+      "text": "Shoes",
+      "link": "/us/originals-shoes"
+    }
+  ],
+  "recommendationsEnabled": true
+}
