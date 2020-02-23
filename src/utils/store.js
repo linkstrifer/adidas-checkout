@@ -125,7 +125,20 @@ function addToCart(product, setStore) {
       newState.cart.products = [...newState.cart.products, product]
     }
 
-    API.addToBasket(current.cart.id, [product])
+    if (!current.cart.id) {
+      API.createBasket().then(({ id }) => {
+        setStore(current => {
+          const newState = { ...current }
+
+          newState.cart.id = id
+
+          return newState
+        })
+        API.addToBasket(id, [product])
+      })
+    } else {
+      API.addToBasket(current.cart.id, [product])
+    }
 
     return newState
   })
