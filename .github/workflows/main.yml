@@ -13,3 +13,5 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku container:login
+    - name: Push
+      run: heroku container:push -a link-adidas
