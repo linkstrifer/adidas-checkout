@@ -18,6 +18,10 @@
   display: block;
   width: 25%;
 
+  @media screen and (max-width: 768px) {
+    width: 50%;
+  }
+
   &:hover {
     border-color: var(--black);
   }
