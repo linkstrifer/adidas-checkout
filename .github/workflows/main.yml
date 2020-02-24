@@ -11,11 +11,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Heroku Login
+      - name: Heroku Credentials
         env:
           EMAIL: ${{ secrets.HEROKU_EMAIL }}
           PASSWORD: ${{ secrets.HEROKU_PASSWORD }}
         run: ': >  ~/.netrc ; echo "machine api.heroku.com \n login $HEROKU_EMAIL \n  password $HEROKU_PASSWORD" >> ~/.netrc'
+      - name: Login
         run: heroku login
       - name: Deploy
         env:
