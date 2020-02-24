@@ -17,5 +17,8 @@ jobs:
       - name: Login
         run: heroku login
 
-      - name: Deploy
+      - name: Add heroku remote
         run: heroku git:remote -a link-adidas
+
+      - name: Push
+        run: git push heroku master
