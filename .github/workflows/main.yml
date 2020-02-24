@@ -11,7 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Login
+      - name: Heroku Credentials
         env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku login
+          EMAIL: ${{ secrets.HEROKU_EMAIL }}
+          PASSWORD: ${{ secrets.HEROKU_API_HEY }}
+        run: ': >  ~/.netrc ; echo "machine api.heroku.com \n login $HEROKU_EMAIL \n  password $HEROKU_API_KEY\n machine git.heroku.com \n login $HEROKU_EMAIL \n  password $HEROKU_API_KEY" >> ~/.netrc'
