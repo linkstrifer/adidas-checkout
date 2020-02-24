@@ -16,6 +16,7 @@ jobs:
           EMAIL: ${{ secrets.HEROKU_EMAIL }}
           PASSWORD: ${{ secrets.HEROKU_PASSWORD }}
         run: ': >  ~/.netrc ; echo "machine api.heroku.com \n login $HEROKU_EMAIL \n  password $HEROKU_PASSWORD" >> ~/.netrc'
+        run: heroku login
       - name: Deploy
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
