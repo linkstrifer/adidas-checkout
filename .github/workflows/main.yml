@@ -7,9 +7,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
     steps:
     - uses: actions/checkout@v2
-    - name: GitHub Action for Heroku
-      uses: actions/heroku@1.0.0
-      env:
-        HEROKU_APP: link-adidas
+    - name: Deploy
+      run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/link-adidas.git $GITHUB_SHA:master
