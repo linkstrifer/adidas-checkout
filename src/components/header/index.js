@@ -33,12 +33,14 @@ function Header() {
   }, [])
 
   return (
-    <header className={styles.header}>
-      <Link to="/" className={styles.logoLink}>
-        <Logo className={styles.logo} />
-      </Link>
-      <ul className={styles.nav}>{navOptions.map(SubNav)}</ul>
-      <HeaderCart />
+    <header className={styles.container}>
+      <div className={styles.wrapper}>
+        <Link to="/" className={styles.logoLink}>
+          <Logo className={styles.logo} />
+        </Link>
+        <ul className={styles.nav}>{navOptions.map(SubNav)}</ul>
+        <HeaderCart />
+      </div>
     </header>
   )
 }

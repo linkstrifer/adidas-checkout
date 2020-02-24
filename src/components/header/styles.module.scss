@@ -7,16 +7,21 @@
   margin-top: var(--height);
 }
 
-.header {
-  align-items: flex-end;
+.container {
   background-color: var(--color-black);
   color: white;
-  display: flex;
-  height: var(--height);
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
+}
+
+.wrapper {
+  align-items: flex-end;
+  display: flex;
+  height: var(--height);
+  margin: auto;
+  max-width: var(--max-width);
 }
 
 .logoLink {
