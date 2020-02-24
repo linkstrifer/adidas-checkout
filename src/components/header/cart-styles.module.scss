@@ -7,13 +7,14 @@
   padding: var(--padding);
   position: relative;
 
-  &:hover {
+  &:hover,
+  &.isFull:hover {
     background-color: var(--color-white);
     color: var(--color-black);
+  }
 
-    .content {
-      display: block;
-    }
+  &.isFull {
+    background-color: var(--color-deep-cerulean);
   }
 }
 

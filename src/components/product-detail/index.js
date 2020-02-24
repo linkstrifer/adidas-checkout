@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import { useStore } from '../../utils/store'
 
@@ -10,6 +11,7 @@ import ColorSelector from '../color-selector'
 import { useParams } from 'react-router-dom'
 
 function ProductDetail({ editMode }) {
+  const [redirect, setRedirect] = useState(false)
   const [store, dispatch] = useStore('productDetail')
   const [productsStore] = useStore('productList')
   const [cartStore, cartDispatch] = useStore('cart')
@@ -39,6 +41,10 @@ function ProductDetail({ editMode }) {
 
   if (!product) {
     return false
+  }
+
+  if (redirect) {
+    return <Redirect to="/cart" />
   }
 
   return (
@@ -99,6 +105,8 @@ function ProductDetail({ editMode }) {
                 quantity,
                 size,
               })
+
+              setRedirect(true)
             }}
           />
         </div>

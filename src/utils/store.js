@@ -220,7 +220,7 @@ function executeAction({ node, type, data, forceUpdate }) {
 }
 
 export const useStore = node => {
-  const [, forceUpdate] = useState(0)
+  const [, forceUpdate] = useState()
   const store = Store.state[node]
 
   useEffect(() => {
