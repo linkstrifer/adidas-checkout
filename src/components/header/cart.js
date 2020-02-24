@@ -7,11 +7,9 @@ import Icon from '../icon'
 
 function HeaderCart() {
   return (
-    <div className={styles.container}>
-      <Link to="/cart">
-        <Icon name="bag-inactive" />
-      </Link>
-    </div>
+    <Link to="/cart" className={styles.container}>
+      <Icon name="bag-inactive" />
+    </Link>
   )
 }
 
