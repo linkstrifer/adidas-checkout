@@ -12,7 +12,7 @@ jobs:
         env:
           EMAIL: ${{ secrets.HEROKU_EMAIL }}
           PASSWORD: ${{ secrets.HEROKU_API_HEY }}
-        run: ': >  ~/.netrc ; echo "machine api.heroku.com \n login $HEROKU_EMAIL \n  password $HEROKU_API_KEY\n machine git.heroku.com \n login $HEROKU_EMAIL \n  password $HEROKU_API_KEY" >> ~/.netrc'
+        run: ': >  ~/.netrc ; echo "machine api.heroku.com \n  login $HEROKU_EMAIL \n  password $HEROKU_API_KEY\n machine git.heroku.com \n  login $HEROKU_EMAIL \n  password $HEROKU_API_KEY" >> ~/.netrc'
 
       - name: Login
         run: heroku login
