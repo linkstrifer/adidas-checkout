@@ -21,4 +21,4 @@ jobs:
         run: heroku git:remote -a link-adidas
 
       - name: Push
-        run: git push heroku master
+        run: git remote -v
