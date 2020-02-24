@@ -18,7 +18,7 @@ jobs:
         run: heroku login
 
       - name: Add heroku remote
-        run: heroku git:remote -a link-adidas --ssh-git
+        run: git remote add heroku https://git.heroku.com/link-adidas.git
 
       - name: Push
         run: git push heroku master
