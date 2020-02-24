@@ -1,4 +1,4 @@
-const host = 'http://localhost:5465/api/checkout/'
+const host = '/api/checkout/'
 const headers = {
   'Content-Type': 'application/json',
 }
