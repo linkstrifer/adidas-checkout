@@ -24,8 +24,7 @@
     "xstate": "^4.7.8"
   },
   "scripts": {
-    "start": "npm i ; npm run build ; (node index.js & npm run api)",
-    "api": "cd server ; npm start",
+    "start": "npm i ; npm run build ; node index.js",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
