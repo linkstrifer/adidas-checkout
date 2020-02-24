@@ -12,4 +12,4 @@ jobs:
     - uses: akhileshns/heroku-deploy@master
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "adidas-link"
+        heroku_app_name: "link-adidas"
