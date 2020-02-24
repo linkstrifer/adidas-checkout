@@ -11,16 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Heroku Credentials
-        env:
-          EMAIL: ${{ secrets.HEROKU_EMAIL }}
-          PASSWORD: ${{ secrets.HEROKU_PASSWORD }}
-        run: ': >  ~/.netrc ; echo "machine api.heroku.com \n login $HEROKU_EMAIL \n  password $HEROKU_PASSWORD" >> ~/.netrc'
       - name: Login
-        run: heroku login
-      - name: Deploy
         env:
-          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-          HEROKU_APP_NAME: 'link-adidas'
-        if: github.ref == 'refs/heads/master' && job.status == 'success'
-        run: git push https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git origin/master:master
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku login
